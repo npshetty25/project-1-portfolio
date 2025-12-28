@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirav Shetty | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Nirav.</div>
+                <div class="nav-links">
+                    <a href="#hero" class="active">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-wrapper">
+                    <div class="hero-image hidden">
+                        <div class="img-container">
+                            <img src="profile.jpg" alt="Nirav Shetty">
+                        </div>
+                    </div>
+                    <div class="hero-content hidden">
+                        <h1>Hello, I'm Nirav Shetty <span class="wave">👋</span></h1>
+                        <p>A passionate Computer Science student and developer building modern web experiences 🚀</p>
+                        <div class="social-links hero-socials">
+                            <a href="mailto:shettynirav2005@gmail.com" title="Email">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg"
+                                    alt="Gmail" height="24" width="24">
+                            </a>
+                            <a href="https://www.instagram.com/niravshetty2005/" target="_blank" title="Instagram">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                                    alt="Instagram" height="24" width="24">
+                            </a>
+                            <a href="https://github.com/npshetty25" target="_blank" title="GitHub">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+                                    alt="GitHub" height="24" width="24">
+                            </a>
+                            <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank"
+                                title="LinkedIn">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+                                    alt="LinkedIn" height="24" width="24">
+                            </a>
+                        </div>
+                        <a href="#projects" class="cta-button">View My Work 💻</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title hidden">About Me</h2>
+                <div class="about-grid hidden">
+                    <div class="about-card">
+                        <h3>🎓 Education</h3>
+                        <div class="timeline-item">
+                            <h4>Bachelor's in Computer Science</h4>
+                            <p class="timeline-date">Present</p>
+                            <p>MIT Manipal</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>12th Grade</h4>
+                            <p class="timeline-date">Completed</p>
+                            <p>Karkala Jnanasudha PU College</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Schooling</h4>
+                            <p class="timeline-date">Completed</p>
+                            <p>Little Rock Indian School</p>
+                        </div>
+                    </div>
+                    <div class="about-card">
+                        <h3>💼 Experience</h3>
+                        <div class="timeline-item">
+                            <h4>Intern</h4>
+                            <p class="timeline-date">Current</p>
+                            <p>SystemTron Company</p>
+                            <p>Working on real-world projects and enhancing development skills.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Previous Internships</h4>
+                            <p>Completed internships at various companies gaining practical exposure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title hidden">My Skills</h2>
+                <div class="skills-grid hidden">
+                    <!-- Languages -->
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul class="skills-list">
+                            <li class="skill-item" style="--skill-color: #E34F26;">
+                                <i class="fa-brands fa-html5"></i>
+                                <span>HTML</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: #1572B6;">
+                                <i class="fa-brands fa-css3-alt"></i>
+                                <span>CSS</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: #F7DF1E;">
+                                <i class="fa-brands fa-js"></i>
+                                <span>JavaScript</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Frameworks -->
+                    <div class="skill-category">
+                        <h3>Frameworks</h3>
+                        <ul class="skills-list">
+                            <li class="skill-item" style="--skill-color: #38B2AC;">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
+                                </svg>
+                                <span>Tailwind</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: var(--text-primary);">
+                                <i class="fa-solid fa-n"></i>
+                                <span>Next.js</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: #61DAFB;">
+                                <i class="fa-brands fa-react"></i>
+                                <span>React.js</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: #7952B3;">
+                                <i class="fa-brands fa-bootstrap"></i>
+                                <span>Bootstrap</span>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!-- CMS & Tools -->
+                    <div class="skill-category">
+                        <h3>Tools & CMS</h3>
+                        <ul class="skills-list">
+                            <li class="skill-item" style="--skill-color: #21759B;">
+                                <i class="fa-brands fa-wordpress"></i>
+                                <span>WordPress</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: #007ACC;">
+                                <i class="fa-solid fa-code"></i>
+                                <span>VS Code</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: #F05032;">
+                                <i class="fa-brands fa-git-alt"></i>
+                                <span>Git</span>
+                            </li>
+                            <li class="skill-item" style="--skill-color: var(--text-primary);">
+                                <i class="fa-brands fa-github"></i>
+                                <span>GitHub</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title hidden">Featured Projects</h2>
+                <div class="projects-grid hidden">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Web Development Projects 🌐</h3>
+                            <p>A collection of web applications and sites built using modern technologies.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a href="projects.html" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>SQL Projects 💾</h3>
+                            <p>Database management and query optimization projects showcasing backend skills.</p>
+                            <div class="tags">
+                                <span class="tag">SQL</span>
+                                <span class="tag">Database</span>
+                            </div>
+                            <a href="projects.html" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+                    <!-- Placeholder for more -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Portfolio Website 🎨</h3>
+                            <p>This personal portfolio website designed with a modern dark theme.</p>
+                            <div class="tags">
+                                <span class="tag">Design</span>
+                                <span class="tag">Frontend</span>
+                            </div>
+                            <a href="#" class="project-link">View Source →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 class="section-title hidden">Get In Touch</h2>
+            <div class="social-links hidden">
+                <a href="mailto:shettynirav2005@gmail.com" title="Email">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail"
+                        height="32" width="32">
+                </a>
+                <a href="https://www.instagram.com/niravshetty2005/" target="_blank" title="Instagram">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"
+                        height="32" width="32">
+                </a>
+                <a href="https://github.com/npshetty25" target="_blank" title="GitHub">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                        height="32" width="32">
+                </a>
+                <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank" title="LinkedIn">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"
+                        height="32" width="32">
+                </a>
+            </div>
+            <p class="hidden">© 2025 Nirav Shetty. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
