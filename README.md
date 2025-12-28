@@ -12,7 +12,7 @@ This is a modern, responsive portfolio website designed to provide a comprehensi
 - **Responsive Design:** Fully optimized for desktop, tablet, and mobile devices.
 - **Theme Toggle:** Built-in Light and Dark mode switcher for better accessibility.
 - **Interactive UI:** Smooth scrolling navigation, reveal animations on scroll, and dynamic hover effects.
-- **Project Showcase:** distinct sections for various project categories (Web Dev, SQL, etc.).
+- **Project Showcase:** distinct sections for various project categories (Web Dev, Game Dev, etc.).
 - **Social Integration:** Direct links to my professional social media profiles.
 
 ## 🛠️ Technologies Used
