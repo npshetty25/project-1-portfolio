@@ -3,8 +3,7 @@
 Welcome to my personal portfolio repository! This project showcases my skills, education, and projects as a Computer Science student and web developer.
 
 ## 🚀 Live Demo
-*(You can add your deployment link here later, e.g., https://npshetty25.github.io/project-1-portfolio/)*
-
+https://niravshettyportfolio.vercel.app/
 ## 📖 About
 This is a modern, responsive portfolio website designed to provide a comprehensive overview of my professional journey. It features a clean user interface with interactive elements and a seamless user experience.
 
