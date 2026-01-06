@@ -172,6 +172,7 @@ header {
     /* Needs RGB conversion for true transparency, but this works if hex matches */
     background: var(--surface-color);
     /* Fallback/Solid for now */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
