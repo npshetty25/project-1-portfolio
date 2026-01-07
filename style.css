@@ -646,6 +646,19 @@ nav {
     }
 }
 
+/* Skill color classes */
+.skill-html { --skill-color: #E34F26; }
+.skill-css { --skill-color: #1572B6; }
+.skill-js { --skill-color: #F7DF1E; }
+.skill-tailwind { --skill-color: #38B2AC; }
+.skill-nextjs { --skill-color: var(--text-primary); }
+.skill-react { --skill-color: #61DAFB; }
+.skill-bootstrap { --skill-color: #7952B3; }
+.skill-wordpress { --skill-color: #21759B; }
+.skill-vscode { --skill-color: #007ACC; }
+.skill-git { --skill-color: #F05032; }
+.skill-github { --skill-color: var(--text-primary); }
+
 .skill-item span {
     font-weight: 500;
     color: var(--text-secondary);
