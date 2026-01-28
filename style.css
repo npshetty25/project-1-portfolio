@@ -291,7 +291,7 @@ nav {
 }
 
 .img-container {
-    width: 350px;
+    width: 450px;
     height: 450px;
     border-radius: 20px;
     overflow: hidden;
@@ -303,6 +303,7 @@ nav {
 .img-container:hover {
     transform: translate(-5px, -5px);
     box-shadow: 25px 25px 0px var(--surface-color), 25px 25px 0px 2px var(--accent-color);
+    
 }
 
 .img-container img {
