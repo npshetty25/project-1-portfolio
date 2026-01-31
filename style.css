@@ -372,8 +372,8 @@ nav {
 
 .hero-description {
     background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 1.5rem 2rem;
@@ -397,6 +397,8 @@ nav {
     font-weight: 600;
     border-bottom: 2px dotted var(--accent-color);
 }
+
+.hero-description {
     max-width: 600px;
 }
 
