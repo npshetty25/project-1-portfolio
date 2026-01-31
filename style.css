@@ -24,7 +24,7 @@
     --bg-color: #f0f2f5;
     --surface-color: #ffffff;
     --text-primary: #213547;
-    --text-secondary: #666;
+    --text-secondary: #4a4a4a;
     --accent-color: #646cff;
     --accent-hover: #535bf2;
     --border-color: #e0e0e0;
@@ -292,7 +292,7 @@ nav {
 
 .img-container {
     width: 450px;
-    height: 450px;
+    height: 65  0px;
     border-radius: 20px;
     overflow: hidden;
     position: relative;
@@ -308,10 +308,9 @@ nav {
 
 .img-container img {
     width: 100%;
-    height: 120%;
+    height: 100%;
     object-fit: cover;
-
-
+    object-position: center top;
 }
 
 .hero-content {
@@ -369,6 +368,35 @@ nav {
     font-size: 1.5rem;
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
+}
+
+.hero-description {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .hero-description {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.hero-description .highlight-text {
+    position: relative;
+    transition: color 0.3s ease;
+    border-bottom: 2px dotted var(--text-secondary);
+}
+
+.container:hover .hero-description .highlight-text {
+    color: var(--accent-color);
+    font-weight: 600;
+    border-bottom: 2px dotted var(--accent-color);
+}
     max-width: 600px;
 }
 
