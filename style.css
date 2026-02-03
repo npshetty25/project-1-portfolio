@@ -406,6 +406,13 @@ nav {
     justify-content: flex-start;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
 .cta-button {
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -415,12 +422,24 @@ nav {
     font-weight: 600;
     font-size: 1.1rem;
     box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.resume-button {
+    background-color: #ff4757;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
 }
 
 .cta-button:hover {
     background-color: var(--accent-hover);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(100, 108, 255, 0.4);
+}
+
+.resume-button:hover {
+    background-color: #ff3838;
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
 }
 
 /* Marquee */
