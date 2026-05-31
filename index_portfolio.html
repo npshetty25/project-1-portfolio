@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nirav Shetty | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Nirav Shetty - Computer Science student building scalable web applications with React, Node.js, and modern backend tools.">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +14,32 @@
 </head>
 
 <body>
+    <!-- Skeleton Loader -->
+    <div id="skeleton-overlay">
+        <div class="sk-nav">
+            <div class="sk-block sk-logo"></div>
+            <div class="sk-nav-links">
+                <div class="sk-block sk-link"></div>
+                <div class="sk-block sk-link"></div>
+                <div class="sk-block sk-link"></div>
+                <div class="sk-block sk-link"></div>
+                <div class="sk-block sk-link"></div>
+            </div>
+        </div>
+        <div class="sk-hero">
+            <div class="sk-block sk-avatar"></div>
+            <div class="sk-hero-content">
+                <div class="sk-block sk-title"></div>
+                <div class="sk-block sk-text"></div>
+                <div class="sk-block sk-text sk-short"></div>
+                <div class="sk-buttons">
+                    <div class="sk-block sk-btn"></div>
+                    <div class="sk-block sk-btn"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <nav>
@@ -24,9 +51,7 @@
                     <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
                     <button id="theme-toggle" aria-label="Toggle Dark Mode">
-                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -37,9 +62,7 @@
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
-                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
@@ -54,7 +77,7 @@
                 <div class="hero-wrapper">
                     <div class="hero-image hidden">
                         <div class="img-container">
-                            <img src="profile.jpg" alt="Nirav Shetty">
+                            <img src="assets/images/profile.jpg" alt="Nirav Shetty">
                         </div>
                     </div>
                     <div class="hero-content hidden">
@@ -62,31 +85,25 @@
                         <p class="hero-description">A computer science student building scalable web applications <span class="highlight-text">with React, Node.js, and modern backend tools</span>, with a strong focus on <span class="highlight-text">clean UI and user experience</span>.🚀</p>
                         <div class="social-links hero-socials">
                             <a href="mailto:shettynirav2005@gmail.com" title="Email">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg"
-                                    alt="Gmail" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" height="24" width="24">
                             </a>
                             <a href="https://www.instagram.com/niravshetty2005/" target="_blank" rel="noopener" title="Instagram">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-                                    alt="Instagram" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" height="24" width="24">
                             </a>
                             <a href="https://github.com/npshetty25" target="_blank" rel="noopener" title="GitHub">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-                                    alt="GitHub" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" height="24" width="24">
                             </a>
-                            <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank" rel="noopener"
-                                title="LinkedIn">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
-                                    alt="LinkedIn" height="24" width="24">
+                            <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank" rel="noopener" title="LinkedIn">
+                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" height="24" width="24">
                             </a>
                         </div>
                         <div class="hero-buttons">
                             <a href="#projects" class="cta-button">View My Work 💻</a>
-                            <a href="NiravPShetty_Resume.pdf" download class="cta-button resume-button">Download Resume 📄</a>
+                            <a href="assets/resume/NiravPShetty_resume.pdf" download class="cta-button resume-button">Download Resume 📄</a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
 
         <section id="about" class="section">
@@ -148,45 +165,83 @@
                                 <i class="fa-brands fa-js"></i>
                                 <span>JavaScript</span>
                             </li>
+                            <li class="skill-item skill-ts">
+                                <i class="fa-solid fa-t"></i>
+                                <span>TypeScript</span>
+                            </li>
+                            <li class="skill-item skill-python">
+                                <i class="fa-brands fa-python"></i>
+                                <span>Python</span>
+                            </li>
+                            <li class="skill-item skill-cpp">
+                                <i class="fa-solid fa-copyright"></i>
+                                <span>C / C++</span>
+                            </li>
                         </ul>
                     </div>
 
                     <!-- Frameworks -->
                     <div class="skill-category">
-                        <h3>Frameworks</h3>
+                        <h3>Frameworks & Libraries</h3>
                         <ul class="skills-list">
-                            <li class="skill-item skill-tailwind">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                    fill="currentColor">
-                                    <path
-                                        d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
-                                </svg>
-                                <span>Tailwind</span>
-                            </li>
-                            <li class="skill-item skill-nextjs">
-                                <i class="fa-solid fa-n"></i>
-                                <span>Next.js</span>
-                            </li>
                             <li class="skill-item skill-react">
                                 <i class="fa-brands fa-react"></i>
                                 <span>React.js</span>
+                            </li>
+                            <li class="skill-item skill-nextjs">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                    <path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 0 0-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 0 1-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 0 1-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 0 1 .174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361a10760.433 10760.433 0 0 0 4.735 7.17l1.9 2.879.096-.063a12.317 12.317 0 0 0 2.466-2.163 11.944 11.944 0 0 0 2.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 0 0-2.499-.523A33.119 33.119 0 0 0 11.573 0zm4.069 7.217c.347 0 .408.005.486.047a.473.473 0 0 1 .237.277c.018.06.023 1.365.018 4.304l-.006 4.218-.744-1.14-.746-1.14v-3.066c0-1.982.01-3.097.023-3.15a.478.478 0 0 1 .233-.296c.096-.05.13-.054.5-.054z"/>
+                                </svg>
+                                <span>Next.js</span>
+                            </li>
+                            <li class="skill-item skill-node">
+                                <i class="fa-brands fa-node-js"></i>
+                                <span>Node.js</span>
+                            </li>
+                            <li class="skill-item skill-express">
+                                <i class="fa-solid fa-server"></i>
+                                <span>Express.js</span>
+                            </li>
+                            <li class="skill-item skill-tailwind">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+                                    <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
+                                </svg>
+                                <span>Tailwind</span>
                             </li>
                             <li class="skill-item skill-bootstrap">
                                 <i class="fa-brands fa-bootstrap"></i>
                                 <span>Bootstrap</span>
                             </li>
-
+                            <li class="skill-item skill-socketio">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Socket.io</span>
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- CMS & Tools -->
+                    <!-- Databases -->
                     <div class="skill-category">
-                        <h3>Tools & CMS</h3>
+                        <h3>Databases</h3>
                         <ul class="skills-list">
-                            <li class="skill-item skill-vscode">
-                                <i class="fa-solid fa-code"></i>
-                                <span>VS Code</span>
+                            <li class="skill-item skill-mongodb">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span>MongoDB</span>
                             </li>
+                            <li class="skill-item skill-postgresql">
+                                <i class="fa-solid fa-database"></i>
+                                <span>PostgreSQL</span>
+                            </li>
+                            <li class="skill-item skill-mysql">
+                                <i class="fa-solid fa-table"></i>
+                                <span>MySQL</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tools & Cloud -->
+                    <div class="skill-category">
+                        <h3>Tools & Cloud</h3>
+                        <ul class="skills-list">
                             <li class="skill-item skill-git">
                                 <i class="fa-brands fa-git-alt"></i>
                                 <span>Git</span>
@@ -195,9 +250,28 @@
                                 <i class="fa-brands fa-github"></i>
                                 <span>GitHub</span>
                             </li>
+                            <li class="skill-item skill-vscode">
+                                <i class="fa-solid fa-code"></i>
+                                <span>VS Code</span>
+                            </li>
+                            <li class="skill-item skill-aws">
+                                <i class="fa-brands fa-aws"></i>
+                                <span>AWS</span>
+                            </li>
+                            <li class="skill-item skill-vercel">
+                                <i class="fa-solid fa-triangle"></i>
+                                <span>Vercel</span>
+                            </li>
+                            <li class="skill-item skill-nginx">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>Nginx</span>
+                            </li>
+                            <li class="skill-item skill-docker">
+                                <i class="fa-brands fa-docker"></i>
+                                <span>Docker</span>
+                            </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -206,22 +280,67 @@
             <div class="container">
                 <h2 class="section-title hidden">Featured Projects</h2>
                 <div class="projects-grid hidden">
-                    <!-- Project 1 -->
+
+                    <!-- Windscapes ERP -->
                     <div class="project-card">
-                        <div class="project-content">
-                            <h3>Web Development Projects 🌐</h3>
-                            <p>A collection of web applications and sites built using modern technologies.</p>
-                            <div class="tags">
-                                <span class="tag">HTML/CSS</span>
-                                <span class="tag">JavaScript</span>
+                        <div class="project-slider" id="slider-windscapes">
+                            <div class="slider-track">
+                                <img src="assets/images/projects/windscapes_1.png" alt="Windscapes ERP Dashboard" class="slider-img">
+                                <img src="assets/images/projects/windscapes_2.png" alt="Windscapes RBAC Panel" class="slider-img">
+                                <img src="assets/images/projects/windscapes_3.png" alt="Windscapes CI/CD Pipeline" class="slider-img">
                             </div>
-                            <a href="https://github.com/npshetty25/SystemTron/tree/main/WebDev" target="_blank" rel="noopener"
-                                class="project-link">View Details →</a>
+                            <div class="slider-dots">
+                                <span class="dot active" data-slider="slider-windscapes" data-index="0"></span>
+                                <span class="dot" data-slider="slider-windscapes" data-index="1"></span>
+                                <span class="dot" data-slider="slider-windscapes" data-index="2"></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Windscapes — Enterprise ERP Platform 🏢</h3>
+                            <p>A scalable enterprise resource planning platform with inventory management, RBAC, and CI/CD pipelines deployed on AWS with Nginx as a reverse proxy.</p>
+                            <div class="tags">
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">AWS</span>
+                                <span class="tag">Nginx</span>
+                            </div>
+                            <a href="https://github.com/npshetty25" target="_blank" rel="noopener" class="project-link">View Project →</a>
                         </div>
                     </div>
-                    <!-- Project 2 -->
+
+                    <!-- NutriTrust -->
                     <div class="project-card">
-                        <img src="wrdl_screenshot.png" alt="Wrdl.io Project Gameplay" class="project-img">
+                        <div class="project-slider" id="slider-nutritrust">
+                            <div class="slider-track">
+                                <img src="assets/images/projects/nutritrust_1.png" alt="NutriTrust Analysis" class="slider-img">
+                                <img src="assets/images/projects/nutritrust_2.png" alt="NutriTrust Dashboard" class="slider-img">
+                                <img src="assets/images/projects/nutritrust_3.png" alt="NutriTrust Scan" class="slider-img">
+                            </div>
+                            <div class="slider-dots">
+                                <span class="dot active" data-slider="slider-nutritrust" data-index="0"></span>
+                                <span class="dot" data-slider="slider-nutritrust" data-index="1"></span>
+                                <span class="dot" data-slider="slider-nutritrust" data-index="2"></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>NutriTrust — AI-Powered Nutrition Platform 🥗</h3>
+                            <p>An intelligent pantry management system with AI-driven health scoring, ingredient analysis, and personalized dietary recommendations for the Indian market.</p>
+                            <div class="tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">AI/ML</span>
+                                <span class="tag">Vercel</span>
+                            </div>
+                            <a href="https://github.com/npshetty25" target="_blank" rel="noopener" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+
+                    <!-- Wrdl.io -->
+                    <div class="project-card">
+                        <img src="assets/images/projects/wrdl_screenshot.png" alt="Wrdl.io Project Gameplay" class="project-img">
                         <div class="project-content">
                             <h3>Wrdl.io 🎮</h3>
                             <p>Multiplayer word strategy game. Race to solve the word or team up to win!</p>
@@ -229,13 +348,15 @@
                                 <span class="tag">Game</span>
                                 <span class="tag">Multiplayer</span>
                                 <span class="tag">React</span>
+                                <span class="tag">Socket.io</span>
                             </div>
                             <a href="https://wrdl-io.onrender.com/" target="_blank" rel="noopener" class="project-link">Play Now →</a>
                         </div>
                     </div>
-                    <!-- Placeholder for more -->
+
+                    <!-- Portfolio -->
                     <div class="project-card">
-                        <img src="portfolio_preview.png" alt="Portfolio Website" class="project-img">
+                        <img src="assets/images/projects/portfolio_preview.png" alt="Portfolio Website" class="project-img">
                         <div class="project-content">
                             <h3>Portfolio Website 🎨</h3>
                             <p>This personal portfolio website designed with a modern dark theme.</p>
@@ -243,10 +364,10 @@
                                 <span class="tag">Design</span>
                                 <span class="tag">Frontend</span>
                             </div>
-                            <a href="https://github.com/npshetty25/project-1-portfolio" target="_blank" rel="noopener"
-                                class="project-link">View Source →</a>
+                            <a href="https://github.com/npshetty25/project-1-portfolio" target="_blank" rel="noopener" class="project-link">View Source →</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -257,27 +378,22 @@
             <h2 class="section-title hidden">Get In Touch</h2>
             <div class="social-links hidden">
                 <a href="mailto:shettynirav2005@gmail.com" title="Email">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail"
-                        height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" height="32" width="32">
                 </a>
                 <a href="https://www.instagram.com/niravshetty2005/" target="_blank" rel="noopener" title="Instagram">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"
-                        height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" height="32" width="32">
                 </a>
                 <a href="https://github.com/npshetty25" target="_blank" rel="noopener" title="GitHub">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
-                        height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" height="32" width="32">
                 </a>
                 <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank" rel="noopener" title="LinkedIn">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"
-                        height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" height="32" width="32">
                 </a>
             </div>
-            
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
