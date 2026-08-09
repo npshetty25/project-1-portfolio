@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nirav Shetty | Portfolio</title>
-    <meta name="description" content="Nirav Shetty - Computer Science student building scalable web applications with React, Node.js, and modern backend tools.">
+    <meta name="description" content="Nirav Shetty - Computer Science undergraduate (MIT Manipal, Batch 2027) building full-stack and AI-native applications with React, Next.js, FastAPI, and local LLMs.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,17 +40,22 @@
         </div>
     </div>
 
+    <div id="scroll-progress"></div>
+
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Nirav.</div>
-                <div class="nav-links">
+                <a href="#hero" class="logo">Nirav<span>.</span></a>
+                <div class="nav-links" id="nav-links">
                     <a href="#hero" class="active">Home</a>
                     <a href="#about">About</a>
                     <a href="#skills">Skills</a>
                     <a href="#projects">Projects</a>
+                    <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
-                    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                </div>
+                <div class="nav-actions">
+                    <button type="button" id="theme-toggle" aria-label="Toggle Dark Mode">
                         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -65,6 +70,9 @@
                         <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
+                    </button>
+                    <button type="button" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+                        <span></span><span></span><span></span>
                     </button>
                 </div>
             </nav>
@@ -81,8 +89,30 @@
                         </div>
                     </div>
                     <div class="hero-content hidden">
+                        <span class="availability-badge">
+                            <span class="pulse-dot"></span>
+                            Open to SDE &amp; AI roles &middot; Batch 2027
+                        </span>
                         <h1>Hello, I'm Nirav Shetty <span class="wave">👋</span></h1>
-                        <p class="hero-description">A computer science student building scalable web applications <span class="highlight-text">with React, Node.js, and modern backend tools</span>, with a strong focus on <span class="highlight-text">clean UI and user experience</span>.🚀</p>
+                        <p class="hero-role">
+                            <span class="role-static">I build</span>
+                            <span class="role-rotator" id="role-rotator" aria-live="polite"></span>
+                        </p>
+                        <p class="hero-description">A Computer Science undergraduate at MIT Manipal building <span class="highlight-text">full-stack and AI-native applications</span> — from a <span class="highlight-text">self-healing AI test automation platform</span> running on a local LLM, to production ERP systems.🚀</p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-num" data-count="2">0</span>
+                                <span class="stat-label">Internships</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" data-count="5" data-suffix="+">0</span>
+                                <span class="stat-label">Shipped Projects</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" data-count="4" data-suffix="+">0</span>
+                                <span class="stat-label">Certifications</span>
+                            </div>
+                        </div>
                         <div class="social-links hero-socials">
                             <a href="mailto:shettynirav2005@gmail.com" title="Email">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" height="24" width="24">
@@ -112,33 +142,46 @@
                 <div class="about-grid hidden">
                     <div class="about-card">
                         <h3>🎓 Education</h3>
-                        <div class="timeline-item">
-                            <h4>Bachelor's in Computer Science</h4>
-                            <p class="timeline-date">Present</p>
-                            <p>MIT Manipal</p>
+                        <div class="timeline-item current">
+                            <h4>B.Tech, Computer Science &amp; Engineering</h4>
+                            <p class="timeline-date">
+                                <span class="status-pill status-now"><span class="pill-dot"></span>Currently here</span>
+                                <span class="timeline-when">Graduating 2027</span>
+                            </p>
+                            <p>MIT Manipal &middot; CGPA 6.2 (62%)</p>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item done">
                             <h4>12th Grade</h4>
-                            <p class="timeline-date">Completed</p>
+                            <p class="timeline-date">
+                                <span class="status-pill status-done">✓ Completed</span>
+                            </p>
                             <p>Karkala Jnanasudha PU College</p>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item done">
                             <h4>Schooling</h4>
-                            <p class="timeline-date">Completed</p>
+                            <p class="timeline-date">
+                                <span class="status-pill status-done">✓ Completed</span>
+                            </p>
                             <p>Little Rock Indian School</p>
                         </div>
                     </div>
                     <div class="about-card">
                         <h3>💼 Experience</h3>
-                        <div class="timeline-item">
-                            <h4>Intern</h4>
-                            <p class="timeline-date">Current</p>
-                            <p>GoPerch</p>
-                            <p>Working on an ERP inventory project.</p>
+                        <div class="timeline-item done">
+                            <h4>Software Testing Intern</h4>
+                            <p class="timeline-date">
+                                <span class="status-pill status-done">✓ Completed</span>
+                            </p>
+                            <p>IGS Global</p>
+                            <p>Deployed a self-built AI test automation platform into live testing workflows, generating and self-healing test suites from plain-English user stories. Built a log-clustering pipeline segmenting user sessions into behaviour personas.</p>
                         </div>
-                        <div class="timeline-item">
-                            <h4>Previous Internships</h4>
-                            <p>SystemTron Company - Completed internship working on real-world projects and enhancing development skills.</p>
+                        <div class="timeline-item done">
+                            <h4>Full-Stack Developer Intern</h4>
+                            <p class="timeline-date">
+                                <span class="status-pill status-done">✓ Completed</span>
+                            </p>
+                            <p>GoPerch Innovations Pvt. Ltd.</p>
+                            <p>Delivered 7+ ERP inventory management features into a live production system. Collaborated in a 10-developer agile team across sprint planning, code reviews, and CI/CD deployment cycles.</p>
                         </div>
                     </div>
                 </div>
@@ -148,10 +191,11 @@
         <section id="skills" class="section">
             <div class="container">
                 <h2 class="section-title hidden">My Skills</h2>
+                <p class="skills-hint hidden">Drag a card to rearrange &middot; pull its bottom edge to resize<button type="button" id="skills-reset">reset</button></p>
                 <div class="skills-grid hidden">
                     <!-- Languages -->
                     <div class="skill-category">
-                        <h3>Languages</h3>
+                        <h3><span class="skill-grip" aria-hidden="true">⠿</span>Languages</h3>
                         <ul class="skills-list">
                             <li class="skill-item skill-html">
                                 <i class="fa-brands fa-html5"></i>
@@ -182,7 +226,7 @@
 
                     <!-- Frameworks -->
                     <div class="skill-category">
-                        <h3>Frameworks & Libraries</h3>
+                        <h3><span class="skill-grip" aria-hidden="true">⠿</span>Frameworks & Libraries</h3>
                         <ul class="skills-list">
                             <li class="skill-item skill-react">
                                 <i class="fa-brands fa-react"></i>
@@ -202,6 +246,10 @@
                                 <i class="fa-solid fa-server"></i>
                                 <span>Express.js</span>
                             </li>
+                            <li class="skill-item skill-fastapi">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>FastAPI</span>
+                            </li>
                             <li class="skill-item skill-tailwind">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
                                     <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
@@ -212,16 +260,12 @@
                                 <i class="fa-brands fa-bootstrap"></i>
                                 <span>Bootstrap</span>
                             </li>
-                            <li class="skill-item skill-socketio">
-                                <i class="fa-solid fa-bolt"></i>
-                                <span>Socket.io</span>
-                            </li>
                         </ul>
                     </div>
 
                     <!-- Databases -->
                     <div class="skill-category">
-                        <h3>Databases</h3>
+                        <h3><span class="skill-grip" aria-hidden="true">⠿</span>Databases</h3>
                         <ul class="skills-list">
                             <li class="skill-item skill-mongodb">
                                 <i class="fa-solid fa-leaf"></i>
@@ -231,6 +275,12 @@
                                 <i class="fa-solid fa-database"></i>
                                 <span>PostgreSQL</span>
                             </li>
+                            <li class="skill-item skill-supabase">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+                                    <path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/>
+                                </svg>
+                                <span>Supabase</span>
+                            </li>
                             <li class="skill-item skill-mysql">
                                 <i class="fa-solid fa-table"></i>
                                 <span>MySQL</span>
@@ -238,9 +288,51 @@
                         </ul>
                     </div>
 
+                    <!-- AI & LLM -->
+                    <div class="skill-category">
+                        <h3><span class="skill-grip" aria-hidden="true">⠿</span>AI &amp; LLM</h3>
+                        <ul class="skills-list">
+                            <li class="skill-item skill-ollama">
+                                <i class="fa-solid fa-brain"></i>
+                                <span>Ollama / Llama 3</span>
+                            </li>
+                            <li class="skill-item skill-gemini">
+                                <i class="fa-solid fa-gem"></i>
+                                <span>Gemini API</span>
+                            </li>
+                            <li class="skill-item skill-prompt">
+                                <i class="fa-solid fa-comment-dots"></i>
+                                <span>Prompt Engineering</span>
+                            </li>
+                            <li class="skill-item skill-embeddings">
+                                <i class="fa-solid fa-vector-square"></i>
+                                <span>Embeddings</span>
+                            </li>
+                            <li class="skill-item skill-copilot">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <span>AI Coding Assistants</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Testing & QA -->
+                    <div class="skill-category">
+                        <h3><span class="skill-grip" aria-hidden="true">⠿</span>Testing &amp; QA</h3>
+                        <ul class="skills-list">
+                            <li class="skill-item skill-playwright">
+                                <i class="fa-solid fa-masks-theater"></i>
+                                <span>Playwright</span>
+                            </li>
+                            <li class="skill-item skill-testing">
+                                <i class="fa-solid fa-vial"></i>
+                                <span>Test Automation</span>
+                            </li>
+                        </ul>
+                    </div>
+
                     <!-- Tools & Cloud -->
                     <div class="skill-category">
-                        <h3>Tools & Cloud</h3>
+                        <h3><span class="skill-grip" aria-hidden="true">⠿</span>Tools & Cloud</h3>
                         <ul class="skills-list">
                             <li class="skill-item skill-git">
                                 <i class="fa-brands fa-git-alt"></i>
@@ -256,19 +348,13 @@
                             </li>
                             <li class="skill-item skill-aws">
                                 <i class="fa-brands fa-aws"></i>
-                                <span>AWS</span>
+                                <span>AWS (Forage)</span>
                             </li>
                             <li class="skill-item skill-vercel">
-                                <i class="fa-solid fa-triangle"></i>
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+                                    <path d="M24 22.525H0l12-21.05 12 21.05z"/>
+                                </svg>
                                 <span>Vercel</span>
-                            </li>
-                            <li class="skill-item skill-nginx">
-                                <i class="fa-solid fa-shield-halved"></i>
-                                <span>Nginx</span>
-                            </li>
-                            <li class="skill-item skill-docker">
-                                <i class="fa-brands fa-docker"></i>
-                                <span>Docker</span>
                             </li>
                         </ul>
                     </div>
@@ -280,6 +366,36 @@
             <div class="container">
                 <h2 class="section-title hidden">Featured Projects</h2>
                 <div class="projects-grid hidden">
+
+                    <!-- QA Copilot Dashboard -->
+                    <div class="project-card">
+                        <div class="project-terminal" aria-hidden="true">
+                            <div class="terminal-bar">
+                                <span class="term-dot term-red"></span>
+                                <span class="term-dot term-amber"></span>
+                                <span class="term-dot term-green"></span>
+                                <span class="terminal-title">qa-copilot &mdash; run suite</span>
+                            </div>
+                            <pre class="terminal-body"><span class="t-dim">›</span> <span class="t-cyan">story</span> "User logs in with valid credentials"
+<span class="t-dim">›</span> generating test cases <span class="t-green">✓</span> <span class="t-dim">(table + Gherkin)</span>
+<span class="t-dim">›</span> grounding on live DOM <span class="t-green">✓</span>
+<span class="t-dim">›</span> locator <span class="t-amber">#submit-btn</span> stale <span class="t-amber">⟳ self-healed</span>
+<span class="t-dim">›</span> suite passed <span class="t-green">✓</span> <span class="t-dim">llama3:8b · local · 0 cloud calls</span></pre>
+                        </div>
+                        <div class="project-content">
+                            <h3>QA Copilot Dashboard — Self-Healing Test Automation 🤖</h3>
+                            <p>An AI QA platform that turns plain-English user stories into structured test cases (table + Gherkin/BDD), then generates runnable Playwright scripts grounded in the target site's live scraped DOM rather than LLM-guessed selectors. Broken locators self-heal at runtime via sentence-transformer embeddings. Runs entirely on a local Llama 3 model — zero cloud API calls.</p>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Playwright</span>
+                                <span class="tag">Ollama (Llama 3)</span>
+                                <span class="tag">Locust</span>
+                            </div>
+                            <span class="project-note">🔒 Private repo — walkthrough available on request</span>
+                        </div>
+                    </div>
 
                     <!-- Windscapes ERP -->
                     <div class="project-card">
@@ -297,16 +413,18 @@
                         </div>
                         <div class="project-content">
                             <h3>Windscapes — Enterprise ERP Platform 🏢</h3>
-                            <p>A scalable enterprise resource planning platform with inventory management, RBAC, and CI/CD pipelines deployed on AWS with Nginx as a reverse proxy.</p>
+                            <p>A 3-service ERP platform spanning 5+ modules — inventory, finance, reporting, auth, and dashboards. Added RBAC and SSL through an Nginx gateway, securing 100% of ingress via a single entry point with 3 permission tiers.</p>
                             <div class="tags">
                                 <span class="tag">TypeScript</span>
                                 <span class="tag">React</span>
-                                <span class="tag">Node.js</span>
-                                <span class="tag">MongoDB</span>
-                                <span class="tag">AWS</span>
+                                <span class="tag">Python</span>
                                 <span class="tag">Nginx</span>
+                                <span class="tag">REST APIs</span>
+                                <span class="tag">CI/CD</span>
                             </div>
-                            <a href="https://github.com/npshetty25" target="_blank" rel="noopener" class="project-link">View Project →</a>
+                            <div class="project-links">
+                                <a href="https://github.com/npshetty25" target="_blank" rel="noopener" class="project-link">View Project →</a>
+                            </div>
                         </div>
                     </div>
 
@@ -325,16 +443,19 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <h3>NutriTrust — AI-Powered Nutrition Platform 🥗</h3>
-                            <p>An intelligent pantry management system with AI-driven health scoring, ingredient analysis, and personalized dietary recommendations for the Indian market.</p>
+                            <h3>NutriTrust — Smart Pantry &amp; Expiry Tracking 🥗</h3>
+                            <p>A household pantry-tracking app with shared shopping lists and scan history, using the Gemini API for OCR to parse receipts, labels, and expiry dates. Designed the relational schema with Row-Level Security policies and security-definer PL/pgSQL functions for atomic multi-user operations — including debugging a production RLS infinite-recursion bug (Postgres 42P17).</p>
                             <div class="tags">
                                 <span class="tag">Next.js</span>
-                                <span class="tag">Python</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Supabase</span>
                                 <span class="tag">PostgreSQL</span>
-                                <span class="tag">AI/ML</span>
-                                <span class="tag">Vercel</span>
+                                <span class="tag">Gemini API</span>
                             </div>
-                            <a href="https://github.com/npshetty25" target="_blank" rel="noopener" class="project-link">View Project →</a>
+                            <div class="project-links">
+                                <a href="https://nutri-trusto.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo →</a>
+                                <a href="https://github.com/npshetty25/NutriTrusto" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+                            </div>
                         </div>
                     </div>
 
@@ -342,15 +463,18 @@
                     <div class="project-card">
                         <img src="assets/images/projects/wrdl_screenshot.png" alt="Wrdl.io Project Gameplay" class="project-img">
                         <div class="project-content">
-                            <h3>Wrdl.io 🎮</h3>
-                            <p>Multiplayer word strategy game. Race to solve the word or team up to win!</p>
+                            <h3>Wrdl.io — Real-Time Multiplayer Wordle 🎮</h3>
+                            <p>Multiplayer word strategy game with sub-second game-state sync across concurrent players via a Socket.io event-driven architecture — under 1s latency with zero client-side game libraries.</p>
                             <div class="tags">
-                                <span class="tag">Game</span>
-                                <span class="tag">Multiplayer</span>
-                                <span class="tag">React</span>
+                                <span class="tag">Next.js</span>
+                                <span class="tag">TypeScript</span>
                                 <span class="tag">Socket.io</span>
+                                <span class="tag">Multiplayer</span>
                             </div>
-                            <a href="https://wrdl-io.onrender.com/" target="_blank" rel="noopener" class="project-link">Play Now →</a>
+                            <div class="project-links">
+                                <a href="https://wrdl-io.onrender.com/" target="_blank" rel="noopener" class="project-link">Play Now →</a>
+                                <a href="https://github.com/npshetty25/Wrdl.io" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+                            </div>
                         </div>
                     </div>
 
@@ -364,9 +488,57 @@
                                 <span class="tag">Design</span>
                                 <span class="tag">Frontend</span>
                             </div>
-                            <a href="https://github.com/npshetty25/project-1-portfolio" target="_blank" rel="noopener" class="project-link">View Source →</a>
+                            <div class="project-links">
+                                <a href="https://niravshettyportfolio.vercel.app/" target="_blank" rel="noopener" class="project-link">Live →</a>
+                                <a href="https://github.com/npshetty25/project-1-portfolio" target="_blank" rel="noopener" class="project-link">View Source →</a>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2 class="section-title hidden">Certifications</h2>
+                <div class="certs-grid hidden">
+
+                    <a href="https://drive.google.com/file/d/1PV1ImGJGEWR-bo_1P5u_ZJ7rdo8J90eO/view?usp=sharing" target="_blank" rel="noopener" class="cert-card">
+                        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
+                        <div class="cert-body">
+                            <h3>Google AI Online Professional Certificate</h3>
+                            <p class="cert-issuer">Coursera</p>
+                        </div>
+                        <span class="cert-arrow">→</span>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1zQ-hwLS9Y8bPIE21XaPXoSytRL53UIRz/view?usp=sharing" target="_blank" rel="noopener" class="cert-card">
+                        <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+                        <div class="cert-body">
+                            <h3>Designing Industry-Ready Scalable APIs &amp; Database Systems</h3>
+                            <p class="cert-issuer">MSSP 2025</p>
+                        </div>
+                        <span class="cert-arrow">→</span>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1osJuVD9J8_i7QyEBfkRy-A0Olot-EW9w/view?usp=sharing" target="_blank" rel="noopener" class="cert-card">
+                        <div class="cert-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="cert-body">
+                            <h3>Deloitte Australia Technology Job Simulation</h3>
+                            <p class="cert-issuer">Forage &middot; Jul 2025</p>
+                        </div>
+                        <span class="cert-arrow">→</span>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1TKjbkLoTm0Kosmy91-OXEFjXcuPZq6RV/view?usp=sharing" target="_blank" rel="noopener" class="cert-card">
+                        <div class="cert-icon"><i class="fa-brands fa-aws"></i></div>
+                        <div class="cert-body">
+                            <h3>AWS APAC Solutions Architecture Virtual Experience</h3>
+                            <p class="cert-issuer">Forage &middot; Jul 2025</p>
+                        </div>
+                        <span class="cert-arrow">→</span>
+                    </a>
 
                 </div>
             </div>
@@ -376,6 +548,11 @@
     <footer id="contact">
         <div class="container">
             <h2 class="section-title hidden">Get In Touch</h2>
+            <p class="footer-pitch hidden">Looking for an intern or new grad who ships? I'm open to SDE, AI, and QA-automation roles for 2027 — and always happy to talk about agents, testing, or anything built with a local LLM.</p>
+            <div class="footer-cta hidden">
+                <a href="mailto:shettynirav2005@gmail.com" class="cta-button">Email Me ✉️</a>
+                <a href="assets/resume/NiravPShetty_resume.pdf" download class="cta-button resume-button">Download Resume 📄</a>
+            </div>
             <div class="social-links hidden">
                 <a href="mailto:shettynirav2005@gmail.com" title="Email">
                     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" height="32" width="32">
@@ -390,8 +567,11 @@
                     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" height="32" width="32">
                 </a>
             </div>
+            <p class="footer-copy">© <span id="year">2026</span> Nirav Shetty · Built from scratch with vanilla HTML, CSS &amp; JS.</p>
         </div>
     </footer>
+
+    <button type="button" id="back-to-top" aria-label="Back to top">↑</button>
 
     <script src="js/script.js"></script>
 </body>
