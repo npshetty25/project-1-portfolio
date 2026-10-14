@@ -7,6 +7,10 @@
     --text-secondary: #a0a0a0;
     --accent-color: #646cff;
     --accent-hover: #747bff;
+    /* Same ink, but safe to set type in. On the lit dark ground the accent
+       already clears 4.5:1, so these match it; on paper they darken. */
+    --accent-ink: #646cff;
+    --accent-ink-hover: #747bff;
     --border-color: #333;
     --font-main: 'Inter', system-ui, -apple-system, sans-serif;
     --transition: all 0.3s ease;
@@ -27,6 +31,10 @@
     --text-secondary: #4a4a4a;
     --accent-color: #646cff;
     --accent-hover: #535bf2;
+    /* Ink on paper runs darker than ink on a lit screen: the accent itself is
+       only 3.65:1 on this ground, so type and rules drawn in it step down. */
+    --accent-ink: #4a51d6;
+    --accent-ink-hover: #3d43b8;
     --border-color: #e0e0e0;
     --hero-overlay: linear-gradient(180deg, rgba(240, 242, 245, 0) 0%, #f0f2f5 100%);
     /* Lighter grid for light theme */
@@ -560,33 +568,44 @@ nav {
     margin-top: 1rem;
 }
 
+/* One filled button per view, and it is the resume download — the site's only
+   conversion. Every other call to action is a ghost drawn in the same ink, so
+   the primary action never competes with a secondary one for attention. The
+   separation is carried by fill and weight rather than by a second hue. */
 .cta-button {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background-color: var(--accent-color);
-    color: white;
+    background-color: transparent;
+    color: var(--accent-ink);
+    border: 1px solid var(--accent-ink);
     border-radius: 50px;
     font-weight: 600;
     font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
     text-decoration: none;
     transition: var(--transition);
 }
 
-.resume-button {
-    background-color: #ff4757;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+.cta-button:hover {
+    background-color: rgba(100, 108, 255, 0.1);
+    border-color: var(--accent-ink-hover);
+    color: var(--accent-ink-hover);
+    transform: translateY(-3px);
 }
 
-.cta-button:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(100, 108, 255, 0.4);
+/* The conversion. The only filled button on the page, and the only one
+   carrying the indigo halo at rest. */
+.resume-button {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
 }
 
 .resume-button:hover {
-    background-color: #ff3838;
-    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(100, 108, 255, 0.4);
 }
 
 /* Marquee */
