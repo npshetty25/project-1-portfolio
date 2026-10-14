@@ -505,46 +505,6 @@ nav {
     font-weight: 500;
 }
 
-.wave {
-    display: inline-block;
-    animation: wave 2.5s infinite;
-    transform-origin: 70% 70%;
-}
-
-@keyframes wave {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    10% {
-        transform: rotate(14deg);
-    }
-
-    20% {
-        transform: rotate(-8deg);
-    }
-
-    30% {
-        transform: rotate(14deg);
-    }
-
-    40% {
-        transform: rotate(-4deg);
-    }
-
-    50% {
-        transform: rotate(10deg);
-    }
-
-    60% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
 .hero-content p {
     font-size: 1.5rem;
     color: var(--text-secondary);
@@ -694,7 +654,19 @@ nav {
 
 /* Finished stages: a plain ticked badge on a grey rail. */
 .timeline-item.done::before {
-    content: '✓';
+    content: '';
+}
+
+.timeline-item.done::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--accent-ink);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 /* The stage in progress: solid, haloed and gently pulsing. */
@@ -1035,12 +1007,16 @@ nav {
 /* Grip only appears on hover, so it never competes with the content. */
 .skill-grip {
     display: inline-block;
-    margin-right: 0.5rem;
-    color: var(--text-secondary);
+    width: 10px;
+    height: 14px;
+    margin-right: 0.6rem;
+    vertical-align: -1px;
     opacity: 0;
     cursor: grab;
+    background-image: radial-gradient(currentColor 1.2px, transparent 1.3px);
+    background-size: 5px 5px;
+    color: var(--text-secondary);
     transition: opacity 0.25s ease;
-    letter-spacing: -2px;
 }
 
 .skill-category:hover .skill-grip {
@@ -1662,4 +1638,118 @@ footer {
     .role-rotator {
         border-right: none;
     }
+}
+
+
+/* ===== DATA-DRIVEN PROJECT CARDS ===== */
+.project-category {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem !important;
+}
+
+.project-card .project-summary {
+    margin-bottom: 1rem;
+}
+
+.media-caption {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+    background: #0d1117;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 !important;
+}
+
+.project-details {
+    margin-bottom: 1.25rem;
+}
+
+.project-details summary {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-ink);
+    list-style: none;
+    padding: 0.35rem 0;
+    width: fit-content;
+}
+
+.project-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.project-details summary::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 0.6rem;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+    vertical-align: 2px;
+}
+
+.project-details[open] summary::before {
+    transform: rotate(45deg);
+}
+
+.project-details p {
+    margin: 0.75rem 0 !important;
+}
+
+.project-highlights {
+    list-style: disc;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+.project-highlights li + li {
+    margin-top: 0.4rem;
+}
+
+.noscript-note {
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.noscript-note a {
+    color: var(--accent-ink);
+    text-decoration: underline;
+}
+
+/* ===== MUSIC ===== */
+.music-panel {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.music-blurb {
+    color: var(--text-secondary);
+}
+
+.music-frame {
+    width: 100%;
+    min-height: 352px;
+    display: grid;
+    place-items: center;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.music-frame iframe {
+    border: 0;
+    display: block;
+    border-radius: 12px;
 }
