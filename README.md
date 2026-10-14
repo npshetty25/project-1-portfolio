@@ -35,6 +35,8 @@ Scripts are classic (non-module) files on purpose, so the page also works when o
 
 **Add a project:** add an object to `js/data/projects.js` (see the header comment there for the fields). Use only facts you can verify in the project's own repository, and set `note` to an honest status line. `groups` controls which filter chips include it.
 
+**Then run `node scripts/prerender.mjs`** and commit the result. It writes the cards into `index_portfolio.html` so crawlers, link previews and anyone without JavaScript still see every project. There is no build step on Vercel; this is a manual step before committing.
+
 **Update the playlist snapshot:** re-fetch the track list from the playlist's embed page and replace `tracks` in `js/data/playlist.js`.
 
 **Replace the resume:** overwrite `assets/resume/NiravPShetty_resume.pdf`.
