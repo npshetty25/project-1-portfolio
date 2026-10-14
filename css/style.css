@@ -1754,3 +1754,129 @@ footer {
 .project-card--featured .slider-img {
     object-position: left top;
 }
+
+
+/* ===== SAFETY NET: never leave content hidden ===== */
+.reveal-all .hidden,
+.reveal-all .projects-grid > .project-card,
+.reveal-all .certs-grid > .cert-card,
+.reveal-all .skills-grid > .skill-category,
+.reveal-all .project-card .project-content > * {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.reveal-all .project-card .project-media {
+    clip-path: none !important;
+}
+
+/* ===== PHONES ===== */
+@media (max-width: 640px) {
+    .section {
+        padding: 3.5rem 0;
+    }
+
+    .section-title {
+        margin-bottom: 2rem;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    /* Skills: pack icons four across and drop the equal-height stretch */
+    .skills-grid {
+        grid-auto-rows: auto;
+        gap: 1rem;
+    }
+
+    .skill-category {
+        min-height: 0;
+        padding: 1.25rem;
+    }
+
+    .skill-category h3 {
+        margin-bottom: 1rem;
+    }
+
+    .skills-list {
+        gap: 1rem 0.5rem;
+        align-content: flex-start;
+    }
+
+    .skill-item {
+        width: calc((100% - 1.5rem) / 4);
+        min-width: 60px;
+    }
+
+    .hero-wrapper {
+        gap: 2rem;
+    }
+
+    .img-container {
+        width: 240px;
+        height: 300px;
+        box-shadow: 12px 12px 0 var(--surface-color), 12px 12px 0 2px var(--border-color);
+    }
+
+    .about-card {
+        padding: 1.5rem;
+    }
+
+    .project-content {
+        padding: 1.25rem;
+    }
+
+    .project-filters {
+        gap: 0.4rem;
+        margin: -0.75rem 0 1.75rem;
+    }
+
+    .filter-chip {
+        padding: 0.35rem 0.85rem;
+        min-height: 40px;
+        font-size: 0.85rem;
+    }
+
+    .cert-card {
+        padding: 1.1rem;
+    }
+
+    /* Music dock: one slim line, never a tall block over the content */
+    .music-dock {
+        width: calc(100vw - 5.25rem);
+        left: 0.6rem;
+        bottom: 0.6rem;
+        border-radius: 14px;
+    }
+
+    .dock-kicker {
+        display: none;
+    }
+
+    .dock-bar {
+        gap: 0.25rem;
+        padding: 0.15rem 0.25rem;
+    }
+
+    .dock-grip {
+        width: 24px;
+        height: 36px;
+    }
+
+    .dock-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .dock-title {
+        font-size: 0.82rem;
+    }
+
+    #back-to-top {
+        width: 42px;
+        height: 42px;
+        bottom: 0.6rem;
+        right: 0.6rem;
+    }
+}
