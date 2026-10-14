@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
     // Storage can throw (private mode, blocked site data). One uncaught throw
     // here would halt the script before the reveal observer runs and leave the
@@ -16,30 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             try { localStorage.removeItem(key); } catch { /* non-fatal */ }
         }
     };
-
-    // ===== SKELETON LOADER =====
-    const skeleton = document.getElementById('skeleton-overlay');
-    let skeletonDismissed = false;
-
-    const dismissSkeleton = (delay) => {
-        if (skeletonDismissed || !skeleton) return;
-        skeletonDismissed = true;
-        setTimeout(() => {
-            skeleton.classList.add('hidden-skeleton');
-            setTimeout(() => skeleton.remove(), 600);
-        }, delay);
-    };
-
-    if (document.readyState === 'complete') {
-        dismissSkeleton(0);
-    } else {
-        window.addEventListener('load', () => dismissSkeleton(100));
-    }
-
-    // Hard ceiling. 'load' waits on every subresource, so one slow or blocked
-    // CDN (fonts, icons) would otherwise strand the visitor on the skeleton
-    // indefinitely. The page is usable well before those finish.
-    setTimeout(() => dismissSkeleton(0), 2500);
 
     // ===== THEME TOGGLE =====
     const themeToggle = document.getElementById('theme-toggle');
@@ -80,7 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ===== SCROLL REVEAL =====
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    // threshold 0: a ratio threshold can never be met by an element taller than
+    // ~10x the viewport (long project grids on phones), and any bottom inset
+    // would strand elements at the very end of the page.
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -203,24 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // ===== CUSTOM CURSOR (pointer devices only) =====
-    if (!isTouch) {
-        const cursor = document.createElement('div');
-        cursor.classList.add('cursor');
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        const hoverElements = document.querySelectorAll('a, button, .project-card, .cta-button, .img-container, .about-card, .skill-item, .dot, .cert-card');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-    }
-
     // ===== IMAGE SLIDERS =====
     function initSlider(sliderId) {
         const sliderEl = document.getElementById(sliderId);
@@ -280,111 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.querySelectorAll('.project-slider').forEach(el => initSlider(el.id));
-
-    // ===== SKILL WIDGETS: DRAG TO REORDER, PULL TO RESIZE =====
-    const skillsGrid = document.querySelector('.skills-grid');
-
-    if (skillsGrid) {
-        const cards = [...skillsGrid.querySelectorAll('.skill-category')];
-        const LAYOUT_KEY = 'skills-layout';
-
-        // Identify cards by their heading so a saved layout survives edits to
-        // the markup order. Read the heading without the grip glyph, so
-        // changing that decoration can't invalidate everyone's saved layout.
-        cards.forEach(c => {
-            const heading = c.querySelector('h3').cloneNode(true);
-            heading.querySelector('.skill-grip')?.remove();
-            c.dataset.skillId = heading.textContent.trim();
-        });
-
-        const readLayout = () => {
-            try {
-                return JSON.parse(store.get(LAYOUT_KEY)) || {};
-            } catch {
-                return {};
-            }
-        };
-
-        const saveLayout = () => {
-            const layout = {
-                order: [...skillsGrid.querySelectorAll('.skill-category')].map(c => c.dataset.skillId),
-                heights: {}
-            };
-            skillsGrid.querySelectorAll('.skill-category').forEach(c => {
-                if (c.style.height) layout.heights[c.dataset.skillId] = c.style.height;
-            });
-            store.set(LAYOUT_KEY, JSON.stringify(layout));
-        };
-
-        // Restore a previous arrangement
-        const saved = readLayout();
-        if (Array.isArray(saved.order)) {
-            saved.order.forEach(id => {
-                const card = cards.find(c => c.dataset.skillId === id);
-                if (card) skillsGrid.appendChild(card);
-            });
-        }
-        if (saved.heights) {
-            Object.entries(saved.heights).forEach(([id, h]) => {
-                const card = cards.find(c => c.dataset.skillId === id);
-                if (card) card.style.height = h;
-            });
-        }
-
-        let dragged = null;
-
-        cards.forEach(card => {
-            card.draggable = true;
-
-            card.addEventListener('dragstart', (e) => {
-                dragged = card;
-                card.classList.add('dragging');
-                e.dataTransfer.effectAllowed = 'move';
-                // Firefox needs data set for the drag to start at all
-                e.dataTransfer.setData('text/plain', card.dataset.skillId);
-            });
-
-            card.addEventListener('dragend', () => {
-                card.classList.remove('dragging');
-                skillsGrid.querySelectorAll('.drop-target')
-                    .forEach(c => c.classList.remove('drop-target'));
-                dragged = null;
-                saveLayout();
-            });
-
-            card.addEventListener('dragover', (e) => {
-                if (!dragged || dragged === card) return;
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'move';
-                card.classList.add('drop-target');
-            });
-
-            card.addEventListener('dragleave', () => card.classList.remove('drop-target'));
-
-            card.addEventListener('drop', (e) => {
-                if (!dragged || dragged === card) return;
-                e.preventDefault();
-                card.classList.remove('drop-target');
-                // Insert before or after depending on which half was dropped on
-                const box = card.getBoundingClientRect();
-                const after = (e.clientX - box.left) > box.width / 2;
-                card.parentNode.insertBefore(dragged, after ? card.nextSibling : card);
-            });
-        });
-
-        // A resize writes an inline height; capture it once the drag finishes.
-        document.addEventListener('mouseup', () => {
-            if (skillsGrid.querySelector('.skill-category[style*="height"]')) saveLayout();
-        });
-
-        document.getElementById('skills-reset')?.addEventListener('click', () => {
-            store.remove(LAYOUT_KEY);
-            cards.forEach(c => {
-                c.style.height = '';
-                skillsGrid.appendChild(c);   // cards[] is in original DOM order
-            });
-        });
-    }
 
     // ===== CONSOLE =====
     // Anyone who opens DevTools on a portfolio is worth saying hello to.
