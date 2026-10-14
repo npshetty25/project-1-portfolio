@@ -225,13 +225,13 @@
             return [cx, cy];
         }
         function savePos(x, y) {
-            try { sessionStorage.setItem(POS_KEY, JSON.stringify([x, y])); } catch { /* optional */ }
+            try { sessionStorage.setItem(POS_KEY, JSON.stringify([x, y])); } catch (e) { /* optional */ }
         }
         function restorePos() {
             try {
                 const p = JSON.parse(sessionStorage.getItem(POS_KEY));
                 if (Array.isArray(p)) place(p[0], p[1]);
-            } catch { /* optional */ }
+            } catch (e) { /* optional */ }
         }
 
         let drag = null;
