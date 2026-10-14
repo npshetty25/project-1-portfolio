@@ -1,0 +1,8 @@
+# AI tooling / design-skill scaffolding — not part of the site
+.claude/
+.agents/
+.gemini/
+.codex/
+.impeccable/
+DESIGN.md
+PRODUCT.md
