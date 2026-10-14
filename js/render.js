@@ -50,8 +50,8 @@
 
         const track = el('div', 'slider-track');
         const dots = el('div', 'slider-dots');
-        project.media.images.forEach(([src, alt], i) => {
-            const img = el('img', 'slider-img');
+        project.media.images.forEach(([src, alt, fit], i) => {
+            const img = el('img', 'slider-img' + (fit === 'contain' ? ' slider-img--contain' : ''));
             img.src = src;
             img.alt = alt;
             img.loading = 'lazy';
@@ -90,8 +90,11 @@
     // ---------- project card ----------
     function card(project) {
         const article = el('article', 'project-card');
-        article.dataset.category = project.category;
-        article.appendChild(mediaFor(project));
+        article.dataset.groups = project.groups.join(' ');
+        if (project.featured) article.classList.add('project-card--featured');
+        const media = el('div', 'project-media');
+        media.appendChild(mediaFor(project));
+        article.appendChild(media);
 
         const body = el('div', 'project-content');
         body.appendChild(el('p', 'project-category', project.category));
@@ -134,28 +137,83 @@
         projects.forEach(p => grid.appendChild(card(p)));
     }
 
-    // ---------- music ----------
-    const playlist = window.PORTFOLIO_PLAYLIST;
-    const music = document.getElementById('music-player');
-    if (music && playlist) {
-        const load = document.getElementById('music-load');
-        const frameHost = document.getElementById('music-frame');
-        const link = document.getElementById('music-link');
-        if (link) link.href = playlist.url;
+    // ---------- filters ----------
+    const filterBar = document.getElementById('project-filters');
+    if (grid && filterBar && Array.isArray(projects) && projects.length >= 6) {
+        const groups = [['all', 'All'], ['ai', 'AI'], ['realtime', 'Real-time'], ['web', 'Web'], ['data', 'Data']];
+        groups.forEach(([key, label], i) => {
+            const b = el('button', 'filter-chip', label);
+            b.type = 'button';
+            b.dataset.filter = key;
+            b.setAttribute('aria-pressed', String(i === 0));
+            b.addEventListener('click', () => {
+                filterBar.querySelectorAll('.filter-chip').forEach(c => c.setAttribute('aria-pressed', String(c === b)));
+                grid.querySelectorAll('.project-card').forEach(card => {
+                    const show = key === 'all' || card.dataset.groups.split(' ').includes(key);
+                    card.hidden = !show;
+                });
+            });
+            filterBar.appendChild(b);
+        });
+        filterBar.hidden = false;
+    }
 
-        if (load && frameHost) {
-            load.addEventListener('click', () => {
-                const frame = document.createElement('iframe');
-                frame.src = playlist.embedUrl;
-                frame.title = 'Spotify playlist: ' + playlist.title;
-                frame.width = '100%';
-                frame.height = '352';
-                frame.loading = 'lazy';
-                frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-                frameHost.textContent = '';
-                frameHost.appendChild(frame);
-                load.hidden = true;
-            }, { once: true });
+    // ---------- music dock ----------
+    // A random track from the playlist is chosen on every load and shown in a
+    // corner player. Autoplay (muted or not) is not possible with a Spotify
+    // embed, so the visitor presses its play button. Nothing starts by itself.
+    const playlist = window.PORTFOLIO_PLAYLIST;
+    const dock = document.getElementById('music-dock');
+    if (dock && playlist && Array.isArray(playlist.tracks) && playlist.tracks.length) {
+        const trackHost = document.getElementById('dock-track');
+        const listHost = document.getElementById('dock-playlist');
+        const titleEl = document.getElementById('dock-title');
+        const toggle = document.getElementById('dock-toggle');
+        const shuffle = document.getElementById('dock-shuffle');
+        const more = dock.querySelector('.dock-more');
+        let current = -1;
+
+        function frame(src, title, height) {
+            const f = document.createElement('iframe');
+            f.src = src;
+            f.title = title;
+            f.width = '100%';
+            f.height = String(height);
+            f.loading = 'lazy';
+            f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+            return f;
         }
+
+        function pick() {
+            const n = playlist.tracks.length;
+            let i = Math.floor(Math.random() * n);
+            if (n > 1 && i === current) i = (i + 1) % n;
+            current = i;
+            const t = playlist.tracks[i];
+            titleEl.textContent = t.title + ' \u2014 ' + t.artist;
+            trackHost.textContent = '';
+            trackHost.appendChild(frame(
+                'https://open.spotify.com/embed/track/' + t.id,
+                'Spotify player: ' + t.title + ' by ' + t.artist, 152));
+        }
+
+        function setOpen(open) {
+            dock.classList.toggle('collapsed', !open);
+            toggle.setAttribute('aria-expanded', String(open));
+        }
+
+        // Start collapsed on phones so it never covers the page.
+        setOpen(!window.matchMedia('(max-width: 768px)').matches);
+
+        toggle.addEventListener('click', () => setOpen(dock.classList.contains('collapsed')));
+        shuffle.addEventListener('click', pick);
+        more.addEventListener('toggle', () => {
+            if (more.open && !listHost.firstChild) {
+                listHost.appendChild(frame(playlist.embedUrl, 'Spotify playlist: ' + playlist.title, 352));
+            }
+        });
+
+        pick();
+        dock.hidden = false;
     }
 })();
