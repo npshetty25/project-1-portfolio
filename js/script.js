@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // whole page at opacity 0, so every access goes through these.
     const store = {
         get(key) {
-            try { return localStorage.getItem(key); } catch { return null; }
+            try { return localStorage.getItem(key); } catch (e) { return null; }
         },
         set(key, value) {
-            try { localStorage.setItem(key, value); } catch { /* non-fatal */ }
+            try { localStorage.setItem(key, value); } catch (e) { /* non-fatal */ }
         },
         remove(key) {
-            try { localStorage.removeItem(key); } catch { /* non-fatal */ }
+            try { localStorage.removeItem(key); } catch (e) { /* non-fatal */ }
         }
     };
 
@@ -59,7 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ~10x the viewport (long project grids on phones), and any bottom inset
     // would strand elements at the very end of the page.
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0 };
-    const observer = new IntersectionObserver((entries) => {
+    // Old WebViews and in-app browsers may lack IntersectionObserver; without
+    // this guard the script would throw and leave every section hidden.
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.hidden').forEach(el => el.classList.add('show'));
+        document.documentElement.classList.add('reveal-all');
+    }
+    const observer = !('IntersectionObserver' in window) ? null : new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
@@ -68,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+    if (observer) document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
     // ===== ANIMATED STAT COUNTERS =====
     const animateCount = (el) => {
@@ -91,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const statsEl = document.querySelector('.hero-stats');
-    if (statsEl) {
+    if (statsEl && 'IntersectionObserver' in window) {
         // The HTML carries the real numbers so readers without JavaScript see
         // them; start the count-up from zero only where it will actually run.
         if (!reduceMotion) {
@@ -238,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sliderEl.addEventListener('focusin', () => { focused = true; syncAuto(); });
         sliderEl.addEventListener('focusout', () => { focused = false; syncAuto(); });
 
+        if (!('IntersectionObserver' in window)) { inView = true; syncAuto(); return; }
         new IntersectionObserver((entries) => {
             inView = entries[0].isIntersecting;
             syncAuto();
