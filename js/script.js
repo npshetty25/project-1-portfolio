@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
+    // Storage can throw (private mode, blocked site data). One uncaught throw
+    // here would halt the script before the reveal observer runs and leave the
+    // whole page at opacity 0, so every access goes through these.
+    const store = {
+        get(key) {
+            try { return localStorage.getItem(key); } catch { return null; }
+        },
+        set(key, value) {
+            try { localStorage.setItem(key, value); } catch { /* non-fatal */ }
+        },
+        remove(key) {
+            try { localStorage.removeItem(key); } catch { /* non-fatal */ }
+        }
+    };
+
     // ===== SKELETON LOADER =====
     const skeleton = document.getElementById('skeleton-overlay');
     let skeletonDismissed = false;
@@ -16,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (document.readyState === 'complete') {
-        dismissSkeleton(300);
+        dismissSkeleton(0);
     } else {
-        window.addEventListener('load', () => dismissSkeleton(400));
+        window.addEventListener('load', () => dismissSkeleton(100));
     }
 
     // Hard ceiling. 'load' waits on every subresource, so one slow or blocked
@@ -29,14 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== THEME TOGGLE =====
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedTheme = store.get('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
 
     themeToggle.addEventListener('click', () => {
         const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        store.set('theme', newTheme);
     });
 
     // ===== MOBILE NAV =====
@@ -170,7 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         navLinks.forEach(link => {
             // exact match: `includes` marked every link active when current was ''
-            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            const isActive = link.getAttribute('href') === `#${current}`;
+            link.classList.toggle('active', isActive);
+            if (isActive) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
         });
     };
 
@@ -217,34 +235,49 @@ document.addEventListener('DOMContentLoaded', () => {
         function goTo(index) {
             currentIndex = (index + totalSlides) % totalSlides;
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === currentIndex);
+                d.setAttribute('aria-current', String(i === currentIndex));
+            });
         }
 
-        function startAuto() {
-            if (reduceMotion) return;
-            autoSlideInterval = setInterval(() => goTo(currentIndex + 1), 3000);
-        }
+        let inView = false;
+        let hovered = false;
+        let focused = false;
 
         function stopAuto() {
             clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+
+        // Autoplay only while the slider is on screen and nobody is using it
+        // (WCAG 2.2.2: moving content needs a way to pause).
+        function syncAuto() {
+            const shouldRun = !reduceMotion && inView && !hovered && !focused;
+            if (shouldRun && !autoSlideInterval) {
+                autoSlideInterval = setInterval(() => goTo(currentIndex + 1), 3000);
+            } else if (!shouldRun) {
+                stopAuto();
+            }
         }
 
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
-                stopAuto();
-                goTo(parseInt(dot.dataset.index));
-                startAuto();
+                goTo(parseInt(dot.dataset.index, 10));
             });
         });
 
-        // Pause on hover
-        sliderEl.addEventListener('mouseenter', stopAuto);
-        sliderEl.addEventListener('mouseleave', startAuto);
+        sliderEl.addEventListener('mouseenter', () => { hovered = true; syncAuto(); });
+        sliderEl.addEventListener('mouseleave', () => { hovered = false; syncAuto(); });
+        sliderEl.addEventListener('focusin', () => { focused = true; syncAuto(); });
+        sliderEl.addEventListener('focusout', () => { focused = false; syncAuto(); });
 
-        startAuto();
+        new IntersectionObserver((entries) => {
+            inView = entries[0].isIntersecting;
+            syncAuto();
+        }, { threshold: 0.3 }).observe(sliderEl);
     }
 
-    initSlider('slider-windscapes');
     initSlider('slider-nutritrust');
 
     // ===== SKILL WIDGETS: DRAG TO REORDER, PULL TO RESIZE =====
@@ -265,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const readLayout = () => {
             try {
-                return JSON.parse(localStorage.getItem(LAYOUT_KEY)) || {};
+                return JSON.parse(store.get(LAYOUT_KEY)) || {};
             } catch {
                 return {};
             }
@@ -279,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsGrid.querySelectorAll('.skill-category').forEach(c => {
                 if (c.style.height) layout.heights[c.dataset.skillId] = c.style.height;
             });
-            localStorage.setItem(LAYOUT_KEY, JSON.stringify(layout));
+            store.set(LAYOUT_KEY, JSON.stringify(layout));
         };
 
         // Restore a previous arrangement
@@ -344,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById('skills-reset')?.addEventListener('click', () => {
-            localStorage.removeItem(LAYOUT_KEY);
+            store.remove(LAYOUT_KEY);
             cards.forEach(c => {
                 c.style.height = '';
                 skillsGrid.appendChild(c);   // cards[] is in original DOM order
