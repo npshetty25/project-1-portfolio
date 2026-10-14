@@ -92,6 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const statsEl = document.querySelector('.hero-stats');
     if (statsEl) {
+        // The HTML carries the real numbers so readers without JavaScript see
+        // them; start the count-up from zero only where it will actually run.
+        if (!reduceMotion) {
+            statsEl.querySelectorAll('.stat-num').forEach(el => { el.textContent = '0'; });
+        }
         const statObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
