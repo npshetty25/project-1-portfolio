@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const track = sliderEl.querySelector('.slider-track');
         const dots = sliderEl.querySelectorAll('.dot');
+        if (dots.length === 0) return;
         const totalSlides = track.querySelectorAll('.slider-img').length;
         let currentIndex = 0;
         let autoSlideInterval;
@@ -278,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.3 }).observe(sliderEl);
     }
 
-    initSlider('slider-nutritrust');
+    document.querySelectorAll('.project-slider').forEach(el => initSlider(el.id));
 
     // ===== SKILL WIDGETS: DRAG TO REORDER, PULL TO RESIZE =====
     const skillsGrid = document.querySelector('.skills-grid');
