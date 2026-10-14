@@ -26,12 +26,13 @@ window.PORTFOLIO_PROJECTS = [
         ],
         tags: ['Python', 'FastAPI', 'React', 'Playwright', 'Ollama (Llama 3)', 'sentence-transformers', 'Locust'],
         links: [],
-        note: 'Private repository, walkthrough on request. Screenshots are the real dashboard UI showing a saved generation for the ParaBank login story.',
+        note: 'Private repository, walkthrough on request. Screenshots are the real dashboard UI in its empty state.',
         media: {
             type: 'slider',
             images: [
-                ['assets/images/projects/qa-copilot/story_input.webp', 'QA Copilot dashboard with a ParaBank login user story entered', 'contain'],
-                ['assets/images/projects/qa-copilot/generated_cases.webp', 'Generated test cases table showing a positive and a negative login case', 'contain']
+                ['assets/images/projects/qa-copilot/story_input.webp', 'QA Copilot dashboard with a user story containing acceptance criteria, a business rule and a functional requirement'],
+                ['assets/images/projects/qa-copilot/performance_tab.webp', 'Performance tab: upload an nginx access log to cluster sessions into user personas'],
+                ['assets/images/projects/qa-copilot/load_test.webp', 'Load-test section: generate a Locust script from cluster weights and run it']
             ]
         },
         source: 'qa-copilot-dashboard README + docs/project-walkthrough.md'
