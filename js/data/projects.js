@@ -12,6 +12,7 @@
 window.PORTFOLIO_PROJECTS = [
     {
         id: 'qa-copilot',
+        groups: ['ai'],
         title: 'QA Copilot Dashboard',
         category: 'AI / QA automation',
         featured: true,
@@ -25,23 +26,19 @@ window.PORTFOLIO_PROJECTS = [
         ],
         tags: ['Python', 'FastAPI', 'React', 'Playwright', 'Ollama (Llama 3)', 'sentence-transformers', 'Locust'],
         links: [],
-        note: 'Private repository. Walkthrough available on request.',
+        note: 'Private repository, walkthrough on request. Screenshots are the real dashboard UI showing a saved generation for the ParaBank login story.',
         media: {
-            type: 'terminal',
-            title: 'qa-copilot: run suite',
-            label: 'Illustrative pipeline output',
-            lines: [
-                [['dim', '> '], ['cyan', 'story '], ['plain', '"User logs in with valid credentials"']],
-                [['dim', '> '], ['plain', 'generating test cases '], ['green', 'ok '], ['dim', '(table + Gherkin)']],
-                [['dim', '> '], ['plain', 'grounding on live DOM '], ['green', 'ok']],
-                [['dim', '> '], ['plain', 'locator '], ['amber', '#submit-btn '], ['plain', 'stale, '], ['amber', 'self-healed']],
-                [['dim', '> '], ['plain', 'suite passed '], ['green', 'ok '], ['dim', 'llama3:8b, local, 0 cloud calls']]
+            type: 'slider',
+            images: [
+                ['assets/images/projects/qa-copilot/story_input.webp', 'QA Copilot dashboard with a ParaBank login user story entered', 'contain'],
+                ['assets/images/projects/qa-copilot/generated_cases.webp', 'Generated test cases table showing a positive and a negative login case', 'contain']
             ]
         },
         source: 'qa-copilot-dashboard README + docs/project-walkthrough.md'
     },
     {
         id: 'nutritrust',
+        groups: ['ai', 'web'],
         title: 'Nutri-Trust: Smart Pantry',
         category: 'Full-stack / AI',
         featured: true,
@@ -73,6 +70,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'oddoreve',
+        groups: ['ai', 'realtime'],
         title: 'ODDOREVE: Hand-Gesture Cricket',
         category: 'Computer vision / real-time',
         featured: false,
@@ -86,25 +84,22 @@ window.PORTFOLIO_PROJECTS = [
         ],
         tags: ['Next.js', 'TypeScript', 'MediaPipe', 'WebRTC', 'PeerJS', 'Zustand', 'Vitest'],
         links: [
+            { label: 'Play', url: 'https://oddreve.vercel.app/' },
             { label: 'Source', url: 'https://github.com/npshetty25/oddreve' }
         ],
-        note: 'No hosted demo yet. Run it locally from the repository.',
+        note: 'Gesture play needs a webcam; a tap keypad is available without one.',
         media: {
-            type: 'terminal',
-            title: 'oddoreve: one ball',
-            label: 'Illustrative round flow',
-            lines: [
-                [['dim', '> '], ['plain', 'countdown '], ['amber', '3, 2, 1, GO']],
-                [['dim', '> '], ['plain', 'gesture '], ['cyan', 'open palm = 5 '], ['dim', 'held 280ms']],
-                [['dim', '> '], ['plain', 'commit '], ['cyan', 'sha256(throw:nonce) '], ['dim', 'sent']],
-                [['dim', '> '], ['plain', 'both committed, reveal '], ['green', 'ok']],
-                [['dim', '> '], ['plain', 'hash matches, ball resolved '], ['green', 'ok']]
+            type: 'slider',
+            images: [
+                ['assets/images/projects/oddoreve/home.webp', 'ODDOREVE home screen with play-a-friend and play-the-computer options'],
+                ['assets/images/projects/oddoreve/modes.webp', 'ODDOREVE mode select: cricket and baseball in 1v1 and 2v2']
             ]
         },
         source: 'oddreve README + src/engine, src/multiplayer, src/vision'
     },
     {
         id: 'wrdl',
+        groups: ['realtime', 'web'],
         title: 'Wrdl.io: Multiplayer Wordle',
         category: 'Real-time web',
         featured: false,
@@ -130,6 +125,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'episode-three',
+        groups: ['data'],
         title: 'Episode Three',
         category: 'Data / ML (in progress)',
         featured: false,
@@ -161,6 +157,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'portfolio',
+        groups: ['web'],
         title: 'This Portfolio',
         category: 'Frontend',
         featured: false,
@@ -185,6 +182,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'windscapes',
+        groups: ['web'],
         title: 'Windscapes: Enterprise ERP',
         category: 'Full-stack / internship',
         featured: false,
