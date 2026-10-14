@@ -4,16 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nirav Shetty | Portfolio</title>
+    <title>Nirav Shetty — Full-Stack &amp; AI Engineer | MIT Manipal, 2027</title>
     <meta name="description" content="Nirav Shetty - Computer Science undergraduate (MIT Manipal, Batch 2027) building full-stack and AI-native applications with React, Next.js, FastAPI, and local LLMs.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="canonical" href="https://niravshettyportfolio.vercel.app/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='50%25' dy='.35em' text-anchor='middle' font-family='Inter,Arial,sans-serif' font-size='40' font-weight='800' fill='%23fff'%3EN%3C/text%3E%3Ccircle cx='47' cy='46' r='4' fill='%23646cff'/%3E%3C/svg%3E">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nirav Shetty — Full-Stack &amp; AI Engineer">
+    <meta property="og:description" content="Self-healing AI test automation on a local LLM, production ERP features, and shipped full-stack apps. CS undergraduate, MIT Manipal, Batch 2027.">
+    <meta property="og:url" content="https://niravshettyportfolio.vercel.app/">
+    <meta property="og:image" content="https://niravshettyportfolio.vercel.app/assets/images/profile.jpg">
+    <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="css/style.css">
+    <noscript>
+        <style>
+            #skeleton-overlay { display: none; }
+            .hidden, .projects-grid > .project-card, .certs-grid > .cert-card, .skills-grid > .skill-category { opacity: 1 !important; transform: none !important; }
+            body { cursor: auto; }
+        </style>
+    </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
+    <a href="#about" class="skip-link">Skip to content</a>
     <!-- Skeleton Loader -->
     <div id="skeleton-overlay">
         <div class="sk-nav">
@@ -40,11 +57,11 @@
         </div>
     </div>
 
-    <div id="scroll-progress"></div>
+    <div id="scroll-progress" aria-hidden="true"></div>
 
     <header>
         <div class="container">
-            <nav>
+            <nav aria-label="Primary">
                 <a href="#hero" class="logo">Nirav<span>.</span></a>
                 <div class="nav-links" id="nav-links">
                     <a href="#hero" class="active">Home</a>
@@ -85,7 +102,7 @@
                 <div class="hero-wrapper">
                     <div class="hero-image hidden">
                         <div class="img-container">
-                            <img src="assets/images/profile.jpg" alt="Nirav Shetty">
+                            <img src="assets/images/profile.jpg" alt="Nirav Shetty" fetchpriority="high" decoding="async">
                         </div>
                     </div>
                     <div class="hero-content hidden">
@@ -96,7 +113,8 @@
                         <h1>Hello, I'm Nirav Shetty <span class="wave">👋</span></h1>
                         <p class="hero-role">
                             <span class="role-static">I build</span>
-                            <span class="role-rotator" id="role-rotator" aria-live="polite"></span>
+                            <span class="role-rotator" id="role-rotator" aria-hidden="true"></span>
+                            <span class="sr-only">full-stack web apps, AI agents that self-heal, test automation platforms, and production ERP systems.</span>
                         </p>
                         <p class="hero-description">A Computer Science undergraduate at MIT Manipal building <span class="highlight-text">full-stack and AI-native applications</span> — from a <span class="highlight-text">self-healing AI test automation platform</span> running on a local LLM, to production ERP systems.🚀</p>
                         <div class="hero-stats">
@@ -115,16 +133,16 @@
                         </div>
                         <div class="social-links hero-socials">
                             <a href="mailto:shettynirav2005@gmail.com" title="Email">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/gmail.svg" alt="Gmail" height="24" width="24">
                             </a>
                             <a href="https://www.instagram.com/niravshetty2005/" target="_blank" rel="noopener" title="Instagram">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/instagram.svg" alt="Instagram" height="24" width="24">
                             </a>
                             <a href="https://github.com/npshetty25" target="_blank" rel="noopener" title="GitHub">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/github.svg" alt="GitHub" height="24" width="24">
                             </a>
                             <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank" rel="noopener" title="LinkedIn">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" height="24" width="24">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/linkedin.svg" alt="LinkedIn" height="24" width="24">
                             </a>
                         </div>
                         <div class="hero-buttons">
@@ -397,49 +415,26 @@
                         </div>
                     </div>
 
-                    <!-- Windscapes ERP -->
-                    <div class="project-card">
-                        <div class="project-slider" id="slider-windscapes">
-                            <div class="slider-track">
-                                <img src="assets/images/projects/windscapes_1.png" alt="Windscapes ERP Dashboard" class="slider-img">
-                                <img src="assets/images/projects/windscapes_2.png" alt="Windscapes RBAC Panel" class="slider-img">
-                                <img src="assets/images/projects/windscapes_3.png" alt="Windscapes CI/CD Pipeline" class="slider-img">
-                            </div>
-                            <div class="slider-dots">
-                                <span class="dot active" data-slider="slider-windscapes" data-index="0"></span>
-                                <span class="dot" data-slider="slider-windscapes" data-index="1"></span>
-                                <span class="dot" data-slider="slider-windscapes" data-index="2"></span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Windscapes — Enterprise ERP Platform 🏢</h3>
-                            <p>A 3-service ERP platform spanning 5+ modules — inventory, finance, reporting, auth, and dashboards. Added RBAC and SSL through an Nginx gateway, securing 100% of ingress via a single entry point with 3 permission tiers.</p>
-                            <div class="tags">
-                                <span class="tag">TypeScript</span>
-                                <span class="tag">React</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Nginx</span>
-                                <span class="tag">REST APIs</span>
-                                <span class="tag">CI/CD</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/npshetty25" target="_blank" rel="noopener" class="project-link">View Project →</a>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- NutriTrust -->
                     <div class="project-card">
                         <div class="project-slider" id="slider-nutritrust">
                             <div class="slider-track">
-                                <img src="assets/images/projects/nutritrust_1.png" alt="NutriTrust Analysis" class="slider-img">
-                                <img src="assets/images/projects/nutritrust_2.png" alt="NutriTrust Dashboard" class="slider-img">
-                                <img src="assets/images/projects/nutritrust_3.png" alt="NutriTrust Scan" class="slider-img">
+                                <img src="assets/images/projects/nutritrust/pantry_dashboard.png" alt="NutriTrust pantry dashboard" class="slider-img" loading="lazy" decoding="async">
+                                <img src="assets/images/projects/nutritrust/pantry_items.png" alt="NutriTrust pantry item list" class="slider-img" loading="lazy" decoding="async">
+                                <img src="assets/images/projects/nutritrust/scanner_feature.png" alt="NutriTrust receipt and label scanner" class="slider-img" loading="lazy" decoding="async">
+                                <img src="assets/images/projects/nutritrust/shopping_list.png" alt="NutriTrust shared shopping list" class="slider-img" loading="lazy" decoding="async">
+                                <img src="assets/images/projects/nutritrust/recipe_suggestions.png" alt="NutriTrust recipe suggestions" class="slider-img" loading="lazy" decoding="async">
+                                <img src="assets/images/projects/nutritrust/pantry_chat.png" alt="NutriTrust pantry chat" class="slider-img" loading="lazy" decoding="async">
+                                <img src="assets/images/projects/nutritrust/impact_dashboard.png" alt="NutriTrust impact dashboard" class="slider-img" loading="lazy" decoding="async">
                             </div>
                             <div class="slider-dots">
-                                <span class="dot active" data-slider="slider-nutritrust" data-index="0"></span>
-                                <span class="dot" data-slider="slider-nutritrust" data-index="1"></span>
-                                <span class="dot" data-slider="slider-nutritrust" data-index="2"></span>
+                                <button type="button" class="dot active" data-slider="slider-nutritrust" data-index="0" aria-label="Show screenshot 1"></button>
+                                <button type="button" class="dot" data-slider="slider-nutritrust" data-index="1" aria-label="Show screenshot 2"></button>
+                                <button type="button" class="dot" data-slider="slider-nutritrust" data-index="2" aria-label="Show screenshot 3"></button>
+                                <button type="button" class="dot" data-slider="slider-nutritrust" data-index="3" aria-label="Show screenshot 4"></button>
+                                <button type="button" class="dot" data-slider="slider-nutritrust" data-index="4" aria-label="Show screenshot 5"></button>
+                                <button type="button" class="dot" data-slider="slider-nutritrust" data-index="5" aria-label="Show screenshot 6"></button>
+                                <button type="button" class="dot" data-slider="slider-nutritrust" data-index="6" aria-label="Show screenshot 7"></button>
                             </div>
                         </div>
                         <div class="project-content">
@@ -461,7 +456,7 @@
 
                     <!-- Wrdl.io -->
                     <div class="project-card">
-                        <img src="assets/images/projects/wrdl_screenshot.png" alt="Wrdl.io Project Gameplay" class="project-img">
+                        <img src="assets/images/projects/wrdl_screenshot.png" alt="Wrdl.io Project Gameplay" class="project-img" loading="lazy" decoding="async">
                         <div class="project-content">
                             <h3>Wrdl.io — Real-Time Multiplayer Wordle 🎮</h3>
                             <p>Multiplayer word strategy game with sub-second game-state sync across concurrent players via a Socket.io event-driven architecture — under 1s latency with zero client-side game libraries.</p>
@@ -480,7 +475,7 @@
 
                     <!-- Portfolio -->
                     <div class="project-card">
-                        <img src="assets/images/projects/portfolio_preview.png" alt="Portfolio Website" class="project-img">
+                        <img src="assets/images/projects/portfolio_preview.png" alt="Portfolio Website" class="project-img" loading="lazy" decoding="async">
                         <div class="project-content">
                             <h3>Portfolio Website 🎨</h3>
                             <p>This personal portfolio website designed with a modern dark theme.</p>
@@ -555,16 +550,16 @@
             </div>
             <div class="social-links hidden">
                 <a href="mailto:shettynirav2005@gmail.com" title="Email">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/gmail.svg" alt="Gmail" height="32" width="32">
                 </a>
                 <a href="https://www.instagram.com/niravshetty2005/" target="_blank" rel="noopener" title="Instagram">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/instagram.svg" alt="Instagram" height="32" width="32">
                 </a>
                 <a href="https://github.com/npshetty25" target="_blank" rel="noopener" title="GitHub">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/github.svg" alt="GitHub" height="32" width="32">
                 </a>
                 <a href="https://www.linkedin.com/in/nirav-shetty-71a707370/" target="_blank" rel="noopener" title="LinkedIn">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" height="32" width="32">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@13.15.0/icons/linkedin.svg" alt="LinkedIn" height="32" width="32">
                 </a>
             </div>
             <p class="footer-copy">© <span id="year">2026</span> Nirav Shetty · Built from scratch with vanilla HTML, CSS &amp; JS.</p>
