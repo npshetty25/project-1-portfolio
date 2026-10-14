@@ -15,6 +15,13 @@
     <meta property="og:url" content="https://niravshettyportfolio.vercel.app/">
     <meta property="og:image" content="https://niravshettyportfolio.vercel.app/assets/images/profile.jpg">
     <meta name="twitter:card" content="summary">
+    <script>
+        // Safety net: if the main script is blocked or throws (old WebView,
+        // flaky network), reveal everything after a few seconds rather than
+        // leaving a blank page.
+        document.documentElement.className += ' js';
+        setTimeout(function () { document.documentElement.className += ' reveal-all'; }, 3500);
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <script type="application/ld+json">
     {
