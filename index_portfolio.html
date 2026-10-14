@@ -368,6 +368,10 @@
         <section id="projects" class="section">
             <div class="container">
                 <h2 class="section-title hidden">Featured Projects</h2>
+                <div class="kinetic" aria-hidden="true">
+                    <div class="kinetic-row" data-dir="-1"><span>AI-assisted QA</span><i>&amp;</i><span>Real-time systems</span><i>&amp;</i><span>AI-assisted QA</span><i>&amp;</i><span>Real-time systems</span></div>
+                    <div class="kinetic-row" data-dir="1"><span>Full-stack apps</span><i>&amp;</i><span>Computer vision</span><i>&amp;</i><span>Full-stack apps</span><i>&amp;</i><span>Computer vision</span></div>
+                </div>
                 <div class="project-filters hidden" id="project-filters" role="group" aria-label="Filter projects" hidden></div>
                 <div class="projects-grid hidden" id="projects-grid">
                     <noscript>
@@ -451,22 +455,21 @@
 
 
     <aside id="music-dock" class="music-dock" aria-label="Music player" hidden>
-        <div class="dock-bar">
-            <button type="button" id="dock-toggle" class="dock-toggle" aria-expanded="true" aria-controls="dock-body">
-                <span class="dock-eq" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="dock-label"><span class="dock-kicker">Playing from my playlist</span><span id="dock-title" class="dock-title"></span></span>
+        <div class="dock-bar" id="dock-bar">
+            <button type="button" id="dock-grip" class="dock-grip" aria-label="Move music player. Drag, or use the arrow keys." title="Drag to move">
+                <span aria-hidden="true"></span>
             </button>
-            <button type="button" id="dock-shuffle" class="dock-btn" aria-label="Pick another random track">
+            <span class="dock-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="dock-label"><span class="dock-kicker">Playing from my playlist</span><span id="dock-title" class="dock-title"></span></span>
+            <button type="button" id="dock-shuffle" class="dock-btn" aria-label="Pick another random track" title="Another track">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+            </button>
+            <button type="button" id="dock-toggle" class="dock-btn dock-min" aria-expanded="true" aria-controls="dock-body" aria-label="Minimize player" title="Minimize">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
         </div>
         <div id="dock-body" class="dock-body">
             <div id="dock-track" class="dock-frame"></div>
-            <details class="dock-more">
-                <summary>Full playlist</summary>
-                <div id="dock-playlist" class="dock-frame dock-frame--list"></div>
-            </details>
-            <p class="dock-hint">Press play on the player above. Browsers do not allow music to start on its own.</p>
         </div>
     </aside>
 
@@ -476,6 +479,7 @@
     <script src="js/data/playlist.js"></script>
     <script src="js/render.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/motion.js"></script>
 </body>
 
 </html>
