@@ -26,8 +26,9 @@
         body.setAttribute('aria-hidden', 'true');
         media.lines.forEach((segments, i) => {
             segments.forEach(([cls, text]) => {
-                const span = el('span', cls === 'plain' ? '' : 't-' + cls, text);
-                body.appendChild(span);
+                body.appendChild(cls === 'plain'
+                    ? document.createTextNode(text)
+                    : el('span', 't-' + cls, text));
             });
             if (i < media.lines.length - 1) body.appendChild(document.createTextNode('\n'));
         });
