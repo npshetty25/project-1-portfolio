@@ -1721,44 +1721,7 @@ footer {
 }
 
 
-/* ===== KINETIC BAND + PROJECT MOTION ===== */
-.kinetic {
-    overflow: hidden;
-    margin: -1rem 0 2.5rem;
-    padding: 0.25rem 0;
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-}
-
-.kinetic-row {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    width: max-content;
-    font-size: clamp(2.2rem, 6.5vw, 5rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.15;
-    white-space: nowrap;
-    will-change: transform;
-}
-
-.kinetic-row span {
-    color: var(--text-primary);
-}
-
-.kinetic-row i {
-    font-style: normal;
-    font-weight: 400;
-    color: var(--text-secondary);
-    opacity: 0.6;
-}
-
-.kinetic-row + .kinetic-row span {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--text-primary);
-}
-
+/* ===== PROJECT MOTION ===== */
 .js-motion .project-card .project-media {
     clip-path: inset(0 0 0 0);
     transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
