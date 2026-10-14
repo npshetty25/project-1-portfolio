@@ -1,56 +1,69 @@
-# Nirav Shetty - Personal Portfolio
+# Nirav Shetty: Portfolio
 
-Welcome to my personal portfolio repository! This project showcases my skills, education, and projects as a Computer Science student and web developer.
+Personal portfolio for a Computer Science undergraduate (MIT Manipal, batch 2027). Plain HTML, CSS and JavaScript: no framework, no build step.
 
-## 🚀 Live Demo
-https://niravshettyportfolio.vercel.app/
-## 📖 About
-This is a modern, responsive portfolio website designed to provide a comprehensive overview of my professional journey. It features a clean user interface with interactive elements and a seamless user experience.
+Live: https://niravshettyportfolio.vercel.app/
 
-## ✨ Features
-- **Responsive Design:** Fully optimized for desktop, tablet, and mobile, with a slide-down mobile menu.
-- **Theme Toggle:** Built-in Light and Dark mode switcher, persisted to `localStorage`.
-- **Interactive UI:** Scroll progress bar, staggered reveal animations, animated stat counters, a typed role rotator, a custom cursor, and a back-to-top button.
-- **Project Showcase:** Auto-advancing image sliders, impact-metric strips, and a terminal-style preview for projects without screenshots.
-- **Certifications:** Linked directly to the verifiable credential for each.
-- **Accessible:** Honours `prefers-reduced-motion`, and swaps the custom cursor for native cursors on touch devices.
-- **Resilient loading:** The intro skeleton clears on a hard timeout, so a slow or blocked CDN can never leave a visitor staring at a loader.
+## What is on the page
 
-## 🛠️ Technologies Used
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **Styling:** Custom CSS variables, Flexbox, CSS Grid
-- **Icons:** Font Awesome, Simple Icons (via inline SVG)
-- **Fonts:** Inter (Google Fonts)
-- **Hosting:** Vercel
+- **Hero** with the resume download as the primary action.
+- **About**: education and internships.
+- **Skills**: grouped icon grid.
+- **Projects**: seven projects rendered from data, with a filter, two featured case studies and a collapsible "How it works" on each card.
+- **Certifications**: each links to its credential.
+- **Music dock**: a corner player that picks a random track from my public Spotify playlist on every load.
+- **Contact**.
 
-## 📂 Project Structure
-- `index_portfolio.html`: Main entry point of the website.
-- `css/style.css`: Global styles, theming variables, and responsive design rules.
-- `js/script.js`: Theme toggle, scroll reveal, active nav highlighting, custom cursor, and project sliders.
-- `assets/images/`: Profile photo and project screenshots.
-- `assets/resume/`: Downloadable resume PDF.
-- `vercel.json`: Deployment configuration.
+Dark and light themes (persisted), keyboard focus styles, skip link and `prefers-reduced-motion` support are built in.
 
-## 🏃‍♂️ How to Run Locally
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/npshetty25/project-1-portfolio.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd project-1-portfolio
-   ```
-3. **Open the project:**
-   Simply open `index_portfolio.html` in your preferred web browser.
-   
-   *Tip: For a better development experience, use the 'Live Server' extension in VS Code.*
+## Project structure
 
-## 📬 Contact
-Feel free to reach out to me!
-- **Email:** [shettynirav2005@gmail.com](mailto:shettynirav2005@gmail.com)
-- **LinkedIn:** [Nirav Shetty](https://www.linkedin.com/in/nirav-shetty-71a707370/)
-- **Instagram:** [@niravshetty2005](https://www.instagram.com/niravshetty2005/)
-- **GitHub:** [npshetty25](https://github.com/npshetty25)
+| Path | Purpose |
+|---|---|
+| `index_portfolio.html` | Page markup (entry point; `vercel.json` rewrites `/` to it) |
+| `css/style.css` | Tokens, layout, components |
+| `js/script.js` | Theme, nav, scroll reveal, counters, role rotator, sliders |
+| `js/render.js` | Builds project cards, filters and the music dock from data |
+| `js/data/projects.js` | **Project content.** Edit this to add or change a project |
+| `js/data/playlist.js` | Snapshot of the Spotify playlist's track list |
+| `assets/images/` | Profile photo and project screenshots |
+| `assets/resume/` | The downloadable resume PDF |
 
----
-© 2026 Nirav Shetty. All rights reserved.
+Scripts are classic (non-module) files on purpose, so the page also works when opened straight from disk.
+
+## Editing content
+
+**Add a project:** add an object to `js/data/projects.js` (see the header comment there for the fields). Use only facts you can verify in the project's own repository, and set `note` to an honest status line. `groups` controls which filter chips include it.
+
+**Update the playlist snapshot:** re-fetch the track list from the playlist's embed page and replace `tracks` in `js/data/playlist.js`.
+
+**Replace the resume:** overwrite `assets/resume/NiravPShetty_resume.pdf`.
+
+## Music dock: how it behaves
+
+The dock shows the Spotify embed for one randomly chosen track plus an expandable full-playlist embed. **Spotify embeds cannot autoplay or start muted**, so the visitor presses the play button in the player. Signed-out visitors hear Spotify's 30-second previews. The dock starts collapsed on phones.
+
+## Run locally
+
+Open `index_portfolio.html` in a browser, or serve the folder:
+
+```
+npx serve .
+```
+
+## Deploy
+
+The repository is connected to Vercel; pushing to `master` deploys. `vercel.json` rewrites `/` to `index_portfolio.html`.
+
+## Known limitations
+
+- Skill icons still load Font Awesome from a CDN. Skill names are plain text, so the grid stays readable if the CDN fails.
+- QA Copilot and Windscapes have no public repository, so their cards carry no source link.
+- The ODDOREVE, QA Copilot and Episode Three terminal previews are labelled as illustrative or taken from reports; they are not recordings.
+- Project images are large PNGs and have not been converted to WebP yet.
+
+## Contact
+
+- Email: shettynirav2005@gmail.com
+- GitHub: https://github.com/npshetty25
+- LinkedIn: https://www.linkedin.com/in/nirav-shetty-71a707370/
