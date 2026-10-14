@@ -159,18 +159,20 @@
     }
 
     // ---------- music dock ----------
-    // A random track from the playlist is chosen on every load and shown in a
-    // corner player. Autoplay (muted or not) is not possible with a Spotify
-    // embed, so the visitor presses its play button. Nothing starts by itself.
+    // A random track from the playlist is chosen on every load. Spotify embeds
+    // cannot autoplay (muted or otherwise), so the visitor presses play.
+    // The dock can be dragged anywhere (grip, or the title area), nudged with
+    // the arrow keys, and minimised. It deliberately has no close button.
     const playlist = window.PORTFOLIO_PLAYLIST;
     const dock = document.getElementById('music-dock');
     if (dock && playlist && Array.isArray(playlist.tracks) && playlist.tracks.length) {
         const trackHost = document.getElementById('dock-track');
-        const listHost = document.getElementById('dock-playlist');
         const titleEl = document.getElementById('dock-title');
         const toggle = document.getElementById('dock-toggle');
         const shuffle = document.getElementById('dock-shuffle');
-        const more = dock.querySelector('.dock-more');
+        const bar = document.getElementById('dock-bar');
+        const grip = document.getElementById('dock-grip');
+        const POS_KEY = 'dock-pos';
         let current = -1;
 
         function frame(src, title, height) {
@@ -200,20 +202,97 @@
         function setOpen(open) {
             dock.classList.toggle('collapsed', !open);
             toggle.setAttribute('aria-expanded', String(open));
+            const label = open ? 'Minimize player' : 'Expand player';
+            toggle.setAttribute('aria-label', label);
+            toggle.title = label.replace(' player', '');
         }
+
+        // ----- position -----
+        function clamp(x, y) {
+            const w = dock.offsetWidth, h = dock.offsetHeight;
+            return [
+                Math.min(Math.max(8, x), Math.max(8, window.innerWidth - w - 8)),
+                Math.min(Math.max(8, y), Math.max(8, window.innerHeight - h - 8))
+            ];
+        }
+        function place(x, y) {
+            const [cx, cy] = clamp(x, y);
+            dock.style.left = cx + 'px';
+            dock.style.top = cy + 'px';
+            dock.style.right = 'auto';
+            dock.style.bottom = 'auto';
+            return [cx, cy];
+        }
+        function savePos(x, y) {
+            try { sessionStorage.setItem(POS_KEY, JSON.stringify([x, y])); } catch { /* optional */ }
+        }
+        function restorePos() {
+            try {
+                const p = JSON.parse(sessionStorage.getItem(POS_KEY));
+                if (Array.isArray(p)) place(p[0], p[1]);
+            } catch { /* optional */ }
+        }
+
+        let drag = null;
+        let moved = false;
+        bar.addEventListener('pointerdown', (e) => {
+            if (e.target.closest('.dock-btn')) return;
+            const rect = dock.getBoundingClientRect();
+            drag = { dx: e.clientX - rect.left, dy: e.clientY - rect.top, sx: e.clientX, sy: e.clientY };
+            moved = false;
+            bar.setPointerCapture(e.pointerId);
+        });
+        bar.addEventListener('pointermove', (e) => {
+            if (!drag) return;
+            if (!moved && Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) < 4) return;
+            moved = true;
+            dock.classList.add('dragging');
+            place(e.clientX - drag.dx, e.clientY - drag.dy);
+        });
+        function endDrag() {
+            if (!drag) return;
+            drag = null;
+            dock.classList.remove('dragging');
+            if (moved) {
+                const rect = dock.getBoundingClientRect();
+                savePos(rect.left, rect.top);
+            }
+        }
+        bar.addEventListener('pointerup', endDrag);
+        bar.addEventListener('pointercancel', endDrag);
+
+        // Keyboard alternative to dragging.
+        grip.addEventListener('keydown', (e) => {
+            const step = e.shiftKey ? 80 : 20;
+            const dir = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+            if (!dir) return;
+            e.preventDefault();
+            const rect = dock.getBoundingClientRect();
+            const [x, y] = place(rect.left + dir[0], rect.top + dir[1]);
+            savePos(x, y);
+        });
+
+        window.addEventListener('resize', () => {
+            if (dock.style.left) {
+                const rect = dock.getBoundingClientRect();
+                place(rect.left, rect.top);
+            }
+        }, { passive: true });
 
         // Start collapsed on phones so it never covers the page.
         setOpen(!window.matchMedia('(max-width: 768px)').matches);
 
-        toggle.addEventListener('click', () => setOpen(dock.classList.contains('collapsed')));
-        shuffle.addEventListener('click', pick);
-        more.addEventListener('toggle', () => {
-            if (more.open && !listHost.firstChild) {
-                listHost.appendChild(frame(playlist.embedUrl, 'Spotify playlist: ' + playlist.title, 352));
+        toggle.addEventListener('click', () => {
+            setOpen(dock.classList.contains('collapsed'));
+            if (dock.style.left) {
+                const rect = dock.getBoundingClientRect();
+                place(rect.left, rect.top);
             }
         });
+        shuffle.addEventListener('click', pick);
 
         pick();
         dock.hidden = false;
+        restorePos();
     }
 })();
