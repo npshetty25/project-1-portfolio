@@ -60,11 +60,11 @@ window.PORTFOLIO_PROJECTS = [
         media: {
             type: 'slider',
             images: [
-                ['assets/images/projects/nutritrust/pantry_dashboard.png', 'Pantry dashboard sorted by expiry urgency'],
-                ['assets/images/projects/nutritrust/scanner_feature.png', 'Receipt and label scanner'],
-                ['assets/images/projects/nutritrust/shopping_list.png', 'Shared shopping list'],
-                ['assets/images/projects/nutritrust/recipe_suggestions.png', 'Recipe suggestions from expiring items'],
-                ['assets/images/projects/nutritrust/impact_dashboard.png', 'Impact dashboard']
+                ['assets/images/projects/nutritrust/pantry_dashboard.webp', 'Pantry dashboard sorted by expiry urgency'],
+                ['assets/images/projects/nutritrust/scanner_feature.webp', 'Receipt and label scanner'],
+                ['assets/images/projects/nutritrust/shopping_list.webp', 'Shared shopping list'],
+                ['assets/images/projects/nutritrust/recipe_suggestions.webp', 'Recipe suggestions from expiring items'],
+                ['assets/images/projects/nutritrust/impact_dashboard.webp', 'Impact dashboard']
             ]
         },
         source: 'NutriTrusto README + PORTFOLIO_REPORT.md (CI run at 6eb9fc6)'
@@ -119,7 +119,7 @@ window.PORTFOLIO_PROJECTS = [
         note: 'Hosted on a free tier, so the first load can take a moment to wake.',
         media: {
             type: 'image',
-            src: 'assets/images/projects/wrdl_screenshot.png',
+            src: 'assets/images/projects/wrdl_screenshot.webp',
             alt: 'Wrdl.io gameplay board with the room sidebar'
         },
         source: 'Wrdl.io README + package.json'
@@ -130,31 +130,31 @@ window.PORTFOLIO_PROJECTS = [
         title: 'Episode Three',
         category: 'Data / ML (in progress)',
         featured: false,
-        summary: 'A data pipeline and experiment design for predicting a season\'s final score from episode three, and whether a viewer will drop a show.',
-        description: 'What exists today is the data layer: an AniList sync into MongoDB Atlas, probes of the AniList and MyAnimeList data, and a report checking where my own list sits relative to the 5,000 Kaggle training users. The two models and the dashboard are specified in the project spec but not trained or built yet.',
+        summary: 'A machine-learning experiment on whether early viewing behaviour predicts how a season ends: Model A predicts a show’s final score from episode three; Model B (will a viewer drop a show) is still in data collection.',
+        description: 'Model A is trained and evaluated. A Ridge regression on episode-three scores and show features was chosen over RandomForest and gradient boosting with time-ordered cross-validation, then scored once on a locked test set of 337 shows. The data layer for Model B is built: 6,050 anime fetched from AniList and joined to a 5,000-user Kaggle sample. The dashboard is specified but not built.',
         highlights: [
-            'Sync that pings the database before any API request and skips if the last run was under 24 hours ago',
-            'Reproducible profile-vs-training report: my 4,181 labelled entries sit at the extreme top of the training range',
-            'Rejected the TMDB API after reading its terms, which prohibit ML use, and recorded the decision',
-            '40 offline tests'
+            'Test MAE 1.52 vs 1.69 for a naive "finale = episode 3" baseline on 337 held-out shows: 10.01% lower against a 10% bar set in advance, a narrow pass',
+            'Pre-registered the evaluation: the test split is loaded exactly once, and a guard stops a second run',
+            'Wrote the caveats into the report: the margin is thin, and the gain is fewer large misses rather than more near-exact predictions',
+            'AniList sync into MongoDB Atlas that fetched 6,050 anime in 121 requests with no rate-limit errors or retries'
         ],
-        tags: ['Python', 'pandas', 'MongoDB', 'pytest'],
+        tags: ['Python', 'scikit-learn', 'pandas', 'MongoDB', 'pytest'],
         links: [
             { label: 'Source', url: 'https://github.com/npshetty25/episode-three' }
         ],
-        note: 'In progress. Models A and B are planned, not yet trained.',
+        note: 'In progress. Model A is done; Model B and the dashboard are not finished.',
         media: {
             type: 'terminal',
-            title: 'episode-three: profile check',
-            label: 'From reports/profile_vs_training.md',
+            title: 'episode-three: model A on the test set',
+            label: 'Figures from devlog 014 and reports/model_a_v1.md',
             lines: [
-                [['dim', '> '], ['plain', 'training users '], ['cyan', '5,000 '], ['dim', '(Kaggle MAL 2020, seed 42)']],
-                [['dim', '> '], ['plain', 'my labelled TV entries '], ['cyan', '4,181 '], ['dim', 'percentile 99.98']],
-                [['dim', '> '], ['plain', 'my drop rate '], ['cyan', '3.0% '], ['dim', 'training median 4.1%']],
-                [['dim', '> '], ['plain', 'model A / model B '], ['amber', 'planned, not trained']]
+                [['dim', '> '], ['plain', 'model '], ['cyan', 'ridge (alpha 100) '], ['dim', 'chosen on validation']],
+                [['dim', '> '], ['plain', 'test set '], ['cyan', '337 shows '], ['dim', 'loaded once']],
+                [['dim', '> '], ['plain', 'test MAE '], ['green', '1.52 '], ['dim', 'vs 1.69 for finale = ep3']],
+                [['dim', '> '], ['plain', 'model B '], ['amber', 'data collection, 6,050 anime']]
             ]
         },
-        source: 'episode-three docs/SPEC.md v1.5, devlog/006, reports/profile_vs_training.md'
+        source: 'episode-three devlog/011-015, docs/SPEC.md v1.14, reports/model_a_v1.md'
     },
     {
         id: 'portfolio',
@@ -176,7 +176,7 @@ window.PORTFOLIO_PROJECTS = [
         note: '',
         media: {
             type: 'image',
-            src: 'assets/images/projects/portfolio_preview.png',
+            src: 'assets/images/projects/portfolio_preview.webp',
             alt: 'Screenshot of this portfolio website'
         },
         source: 'this repository'
@@ -199,9 +199,9 @@ window.PORTFOLIO_PROJECTS = [
         media: {
             type: 'slider',
             images: [
-                ['assets/images/projects/windscapes_1.png', 'Windscapes ERP dashboard'],
-                ['assets/images/projects/windscapes_2.png', 'Windscapes role-based access panel'],
-                ['assets/images/projects/windscapes_3.png', 'Windscapes CI/CD pipeline']
+                ['assets/images/projects/windscapes_1.webp', 'Windscapes ERP dashboard'],
+                ['assets/images/projects/windscapes_2.webp', 'Windscapes role-based access panel'],
+                ['assets/images/projects/windscapes_3.webp', 'Windscapes CI/CD pipeline']
             ]
         },
         source: 'resume (no repository to verify against)'
