@@ -81,10 +81,67 @@
 
     const STATUS = { live: 'Live', private: 'Private repo', progress: 'In progress', nolink: 'No public source' };
 
+    function rail(project) {
+        const m = project.media;
+        const wrap = el('div', 'media-rail');
+
+        const main = el('img', 'rail-main');
+        main.src = m.items[0].src;
+        main.alt = m.items[0].alt;
+        main.loading = 'lazy';
+        main.decoding = 'async';
+        wrap.appendChild(main);
+
+        const caption = el('p', 'rail-caption', m.items[0].caption);
+        caption.setAttribute('aria-live', 'polite');
+        wrap.appendChild(caption);
+
+        const tabs = el('div', 'rail-tabs');
+        tabs.setAttribute('role', 'tablist');
+        tabs.setAttribute('aria-label', m.label);
+        m.items.forEach((item, i) => {
+            const tab = el('button', 'rail-tab');
+            tab.type = 'button';
+            tab.setAttribute('role', 'tab');
+            tab.setAttribute('aria-selected', String(i === 0));
+            tab.dataset.index = String(i);
+            const thumb = el('img');
+            thumb.src = item.src;
+            thumb.alt = '';
+            thumb.loading = 'lazy';
+            thumb.decoding = 'async';
+            tab.appendChild(thumb);
+            tab.appendChild(el('span', '', item.label));
+            tabs.appendChild(tab);
+        });
+        wrap.appendChild(tabs);
+
+        const buttons = [...tabs.children];
+        function select(i, focus) {
+            const item = m.items[i];
+            buttons.forEach((b, k) => b.setAttribute('aria-selected', String(k === i)));
+            main.src = item.src;
+            main.alt = item.alt;
+            caption.textContent = item.caption;
+            if (focus) buttons[i].focus();
+        }
+        buttons.forEach((b, i) => {
+            b.addEventListener('click', () => select(i, false));
+            b.addEventListener('keydown', (e) => {
+                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+                e.preventDefault();
+                const n = buttons.length;
+                select((i + (e.key === 'ArrowRight' ? 1 : n - 1)) % n, true);
+            });
+        });
+        return wrap;
+    }
+
     function mediaFor(project) {
         switch (project.media.type) {
             case 'terminal': return terminal(project.media);
             case 'slider': return slider(project);
+            case 'rail': return rail(project);
             case 'image': return image(project.media);
             default: return document.createDocumentFragment();
         }
@@ -95,6 +152,7 @@
         const article = el('article', 'project-card');
         article.dataset.groups = project.groups.join(' ');
         if (project.featured) article.classList.add('project-card--featured');
+        if (project.media.type === 'rail') article.classList.add('project-card--rail');
         const media = el('div', 'project-media');
         media.appendChild(mediaFor(project));
         article.appendChild(media);
