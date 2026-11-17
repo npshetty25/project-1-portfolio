@@ -3,7 +3,8 @@
  * (README, PORTFOLIO_REPORT, devlog) on 2026-10-15. If a claim cannot be
  * verified from a repo, it is not here. `source` records where each came from.
  *
- * media.type: "terminal" | "slider" | "image" | "rail" (large preview + thumbnail tabs) | "architecture" (inline SVG diagram)
+ * flip: true puts the media on the right of a featured card
+ * media.type: "terminal" | "slider" | "image" | "rail" (large preview + thumbnail tabs; ratio, portrait optional) | "architecture" (inline SVG diagram)
  * terminal lines are arrays of [className, text] segments:
  *   dim | cyan | green | amber | plain
  * status: live | private | progress | nolink  (shown as a labelled chip)
@@ -13,6 +14,7 @@
 window.PORTFOLIO_PROJECTS = [
     {
         id: 'qa-copilot',
+        flip: true,
         status: 'private',
         groups: ['ai'],
         title: 'QA Copilot Dashboard',
@@ -77,13 +79,40 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: 'The category model runs in CI and Docker, not on the Vercel deployment, which falls back to keyword rules.',
         media: {
-            type: 'slider',
-            images: [
-                ['assets/images/projects/nutritrust/pantry_dashboard.webp', 'Pantry dashboard sorted by expiry urgency'],
-                ['assets/images/projects/nutritrust/scanner_feature.webp', 'Receipt and label scanner'],
-                ['assets/images/projects/nutritrust/shopping_list.webp', 'Shared shopping list'],
-                ['assets/images/projects/nutritrust/recipe_suggestions.webp', 'Recipe suggestions from expiring items'],
-                ['assets/images/projects/nutritrust/impact_dashboard.webp', 'Impact dashboard']
+            type: 'rail',
+            label: 'Nutri-Trust screens',
+            portrait: true,
+            items: [
+                {
+                    src: 'assets/images/projects/nutritrust/pantry_dashboard.webp',
+                    label: 'Dashboard',
+                    alt: 'Pantry dashboard showing freshness, critical items and a prompt to cook what expires first',
+                    caption: 'Dashboard: pantry freshness, critical items and a prompt to cook what expires first.'
+                },
+                {
+                    src: 'assets/images/projects/nutritrust/scanner_feature.webp',
+                    label: 'Scanner',
+                    alt: 'Scan Barcode dialog with a camera view and a field to type the barcode',
+                    caption: 'Scanner: point the camera at a barcode, or type the number if scanning fails.'
+                },
+                {
+                    src: 'assets/images/projects/nutritrust/shopping_list.webp',
+                    label: 'Shopping',
+                    alt: 'Shopping list dialog with an add-item field',
+                    caption: 'Shopping list: add the things you need to buy.'
+                },
+                {
+                    src: 'assets/images/projects/nutritrust/recipe_suggestions.webp',
+                    label: 'Recipes',
+                    alt: 'Recipes by cuisine with Veg, Egg OK and All diet filters',
+                    caption: 'Recipes by cuisine, filtered to your diet: Veg, Egg OK or All.'
+                },
+                {
+                    src: 'assets/images/projects/nutritrust/impact_dashboard.webp',
+                    label: 'Impact',
+                    alt: 'Impact dashboard with a waste-free streak and estimated savings',
+                    caption: 'Impact: waste-free streak and estimated savings, labelled as directional, not exact.'
+                }
             ]
         },
         source: 'NutriTrusto README + PORTFOLIO_REPORT.md (CI run at 6eb9fc6)'
@@ -110,10 +139,22 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: 'Gesture play needs a webcam; a tap keypad is available without one.',
         media: {
-            type: 'slider',
-            images: [
-                ['assets/images/projects/oddoreve/home.webp', 'ODDOREVE home screen with play-a-friend and play-the-computer options'],
-                ['assets/images/projects/oddoreve/modes.webp', 'ODDOREVE mode select: cricket and baseball in 1v1 and 2v2']
+            type: 'rail',
+            label: 'ODDOREVE screens',
+            ratio: '16 / 10',
+            items: [
+                {
+                    src: 'assets/images/projects/oddoreve/home.webp',
+                    label: 'Home',
+                    alt: 'ODDOREVE home screen with play-a-friend and play-the-computer options',
+                    caption: 'Home: play a friend online, or play the computer.'
+                },
+                {
+                    src: 'assets/images/projects/oddoreve/modes.webp',
+                    label: 'Modes',
+                    alt: 'ODDOREVE mode select: cricket and baseball in 1v1 and 2v2',
+                    caption: 'Modes: cricket and baseball, each 1v1 or 2v2.'
+                }
             ]
         },
         source: 'oddreve README + src/engine, src/multiplayer, src/vision'
@@ -139,9 +180,29 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: 'Hosted on a free tier, so the first load can take a moment to wake.',
         media: {
-            type: 'image',
-            src: 'assets/images/projects/wrdl_screenshot.webp',
-            alt: 'Wrdl.io gameplay board with the room sidebar'
+            type: 'rail',
+            label: 'Wrdl.io screens',
+            ratio: '2 / 1',
+            items: [
+                {
+                    src: 'assets/images/projects/wrdl/first_look.webp',
+                    label: 'Home',
+                    alt: 'Wrdl.io home screen with competitive and cooperative modes and create or join room',
+                    caption: 'Home: pick competitive or cooperative, then create or join a room.'
+                },
+                {
+                    src: 'assets/images/projects/wrdl/competitive.webp',
+                    label: 'Competitive',
+                    alt: 'Wrdl.io competitive match with a QR code, room code, timer and opponent board',
+                    caption: 'Competitive: race to find the word first. Share the room by QR code or link.'
+                },
+                {
+                    src: 'assets/images/projects/wrdl/cooperative.webp',
+                    label: 'Cooperative',
+                    alt: 'Wrdl.io cooperative match with one shared board',
+                    caption: 'Cooperative: work together on one shared board to solve the word.'
+                }
+            ]
         },
         source: 'Wrdl.io README + package.json'
     },
@@ -198,9 +259,29 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: '',
         media: {
-            type: 'image',
-            src: 'assets/images/projects/portfolio_preview.webp',
-            alt: 'Screenshot of this portfolio website'
+            type: 'rail',
+            label: 'Portfolio screens',
+            ratio: '16 / 10',
+            items: [
+                {
+                    src: 'assets/images/projects/portfolio/hero.webp',
+                    label: 'Hero',
+                    alt: 'The portfolio home screen with name, stats and resume button',
+                    caption: 'Hero: name, role, key numbers and the resume download.'
+                },
+                {
+                    src: 'assets/images/projects/portfolio/projects.webp',
+                    label: 'Projects',
+                    alt: 'The portfolio projects section with filter chips and the featured QA Copilot project',
+                    caption: 'Projects: filterable cards with status chips and screenshots.'
+                },
+                {
+                    src: 'assets/images/projects/portfolio/skills.webp',
+                    label: 'Skills',
+                    alt: 'The portfolio skills section grouped into six categories',
+                    caption: 'Skills: six groups with inline icons.'
+                }
+            ]
         },
         source: 'this repository'
     },
@@ -249,11 +330,28 @@ window.PORTFOLIO_PROJECTS = [
         links: [],
         note: 'Source not linked. Content from my resume; walkthrough available on request.',
         media: {
-            type: 'slider',
-            images: [
-                ['assets/images/projects/windscapes_1.webp', 'Windscapes ERP dashboard'],
-                ['assets/images/projects/windscapes_2.webp', 'Windscapes role-based access panel'],
-                ['assets/images/projects/windscapes_3.webp', 'Windscapes CI/CD pipeline']
+            type: 'rail',
+            label: 'Windscapes visuals',
+            ratio: '1 / 1',
+            items: [
+                {
+                    src: 'assets/images/projects/windscapes_1.webp',
+                    label: 'Dashboard',
+                    alt: 'Illustrative visual of an ERP inventory dashboard',
+                    caption: 'Illustrative visual, not a screenshot: an ERP inventory dashboard.'
+                },
+                {
+                    src: 'assets/images/projects/windscapes_2.webp',
+                    label: 'Access',
+                    alt: 'Illustrative visual of role-based access control and an Nginx gateway diagram',
+                    caption: 'Illustrative visual, not a screenshot: role-based access and the Nginx gateway.'
+                },
+                {
+                    src: 'assets/images/projects/windscapes_3.webp',
+                    label: 'CI/CD',
+                    alt: 'Illustrative visual of a CI/CD pipeline',
+                    caption: 'Illustrative visual, not a screenshot: a CI/CD pipeline.'
+                }
             ]
         },
         source: 'resume (no repository to verify against)'
