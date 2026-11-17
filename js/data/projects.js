@@ -3,7 +3,7 @@
  * (README, PORTFOLIO_REPORT, devlog) on 2026-10-15. If a claim cannot be
  * verified from a repo, it is not here. `source` records where each came from.
  *
- * media.type: "terminal" | "slider" | "image" | "rail" (large preview + thumbnail tabs)
+ * media.type: "terminal" | "slider" | "image" | "rail" (large preview + thumbnail tabs) | "architecture" (inline SVG diagram)
  * terminal lines are arrays of [className, text] segments:
  *   dim | cyan | green | amber | plain
  * status: live | private | progress | nolink  (shown as a labelled chip)
@@ -66,7 +66,7 @@ window.PORTFOLIO_PROJECTS = [
         description: 'Gemini reads receipts, labels and printed expiry dates, Open Food Facts resolves barcodes, and households share a pantry through invite codes with Postgres row-level security deciding who sees what. Expiry is shown as risk bands and shelf-life estimates with their source, not as a claim that food has spoiled. Recipes are validated server-side against the user\'s diet before they are shown.',
         highlights: [
             'Debugged a production RLS infinite-recursion bug (Postgres 42P17) and pinned it with a negative-control test',
-            '515 unit, component, API and RLS tests plus 59 browser tests, run on every push in CI',
+            '849 unit, component, API and RLS tests plus Playwright browser journeys on phone and desktop, run on every push in CI',
             'Category model: 85.3% accuracy vs 42.6% for the previous keyword rules on a held-out set of 510 products',
             'Installable PWA with an offline page'
         ],
@@ -203,6 +203,34 @@ window.PORTFOLIO_PROJECTS = [
             alt: 'Screenshot of this portfolio website'
         },
         source: 'this repository'
+    },
+    {
+        id: 'ai-codebase-assistant',
+        status: 'progress',
+        groups: ['ai', 'web'],
+        title: 'AI Codebase Assistant',
+        category: 'Full-stack / AI',
+        featured: false,
+        summary: 'Upload a codebase as a zip, get a structured analysis, and search it in natural language with vector search.',
+        description: 'Uploads are unpacked and split into chunks. A Python FastAPI service embeds them with all-MiniLM-L6-v2 and indexes them in FAISS. A Node and Express backend handles JWT auth with bcrypt, user and admin roles, projects and Socket.io project chat. The React and TypeScript frontend ties them together.',
+        highlights: [
+            'Three services: a React frontend, a Node backend and a Python AI engine',
+            'Semantic search over an uploaded codebase using FAISS and sentence-transformers',
+            'Real-time project chat with multi-user rooms and typing indicators',
+            'Role-based access control for user and admin accounts'
+        ],
+        tags: ['React', 'TypeScript', 'Node.js', 'Socket.io', 'FastAPI', 'FAISS', 'MongoDB'],
+        links: [
+            { label: 'Source', url: 'https://github.com/npshetty25/ai-codebase-assistant' }
+        ],
+        note: 'In progress. No hosted demo and no automated tests yet.',
+        media: {
+            type: 'architecture',
+            label: 'Architecture, from the project README',
+            alt: 'Architecture: a React frontend talks to a Node.js Express and Socket.io backend, which calls a Python FastAPI service using FAISS; the backend stores data in MongoDB.',
+            svg: `<svg viewBox="0 0 520 250" aria-hidden="true" font-family="Inter, system-ui, sans-serif"><defs><marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6e7681"/></marker></defs><g fill="#161b22" stroke="#30363d"><rect x="10" y="30" width="140" height="64" rx="10"/><rect x="190" y="30" width="140" height="64" rx="10"/><rect x="370" y="30" width="140" height="64" rx="10"/><rect x="190" y="160" width="140" height="64" rx="10"/></g><g fill="#c9d1d9" font-size="13" font-weight="600" text-anchor="middle"><text x="80" y="58">React UI</text><text x="260" y="58">Node + Express</text><text x="440" y="58">Python + FastAPI</text><text x="260" y="188">MongoDB</text></g><g fill="#8b949e" font-size="11" text-anchor="middle"><text x="80" y="76">Tailwind, Vite</text><text x="260" y="76">Socket.io, JWT</text><text x="440" y="76">FAISS, embeddings</text><text x="260" y="206">projects, users, chat</text></g><g stroke="#6e7681" stroke-width="1.5" fill="none" marker-end="url(#arch-arrow)" marker-start="url(#arch-arrow)"><path d="M150 62H188"/><path d="M330 62H368"/><path d="M260 94V158"/></g><text x="169" y="52" fill="#8b949e" font-size="10" text-anchor="middle">HTTP, WS</text><text x="349" y="52" fill="#8b949e" font-size="10" text-anchor="middle">HTTP</text></svg>`
+        },
+        source: 'ai-codebase-assistant README + server, client and ai-service code'
     },
     {
         id: 'windscapes',
