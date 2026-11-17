@@ -137,11 +137,24 @@
         return wrap;
     }
 
+    function architecture(project) {
+        const m = project.media;
+        const frag = document.createDocumentFragment();
+        const box = el('div', 'arch');
+        box.setAttribute('role', 'img');
+        box.setAttribute('aria-label', m.alt);
+        box.innerHTML = m.svg; // trusted: authored in js/data/projects.js
+        frag.appendChild(box);
+        frag.appendChild(el('p', 'media-caption', m.label));
+        return frag;
+    }
+
     function mediaFor(project) {
         switch (project.media.type) {
             case 'terminal': return terminal(project.media);
             case 'slider': return slider(project);
             case 'rail': return rail(project);
+            case 'architecture': return architecture(project);
             case 'image': return image(project.media);
             default: return document.createDocumentFragment();
         }
