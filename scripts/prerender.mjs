@@ -80,8 +80,8 @@ function card(p) {
         ? `<div class="project-links">${p.links.map(l =>
             `<a class="project-link" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join('')}</div>`
         : '';
-    return `<article class="project-card${p.featured ? ' project-card--featured' : ''}${p.media.type === 'rail' ? ' project-card--rail' : ''}${p.flip ? ' project-card--flip' : ''}" data-groups="${esc(p.groups.join(' '))}">` +
-        `<div class="project-media">${media(p)}</div>` +
+    return `<article class="project-card${p.featured ? ' project-card--featured' : ''}${p.media && p.media.type === 'rail' ? ' project-card--rail' : ''}${p.flip ? ' project-card--flip' : ''}" data-groups="${esc(p.groups.join(' '))}">` +
+        (p.media ? `<div class="project-media">${media(p)}</div>` : '') +
         `<div class="project-content">` +
         `<p class="project-status" data-status="${esc(p.status)}"><span class="status-dot"></span>${esc(STATUS[p.status])}</p>` +
         `<p class="project-category">${esc(p.category)}</p>` +
