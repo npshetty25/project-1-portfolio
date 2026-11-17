@@ -3,7 +3,7 @@
  * (README, PORTFOLIO_REPORT, devlog) on 2026-10-15. If a claim cannot be
  * verified from a repo, it is not here. `source` records where each came from.
  *
- * media.type: "terminal" | "slider" | "image"
+ * media.type: "terminal" | "slider" | "image" | "rail" (large preview + thumbnail tabs)
  * terminal lines are arrays of [className, text] segments:
  *   dim | cyan | green | amber | plain
  * status: live | private | progress | nolink  (shown as a labelled chip)
@@ -28,13 +28,29 @@ window.PORTFOLIO_PROJECTS = [
         ],
         tags: ['Python', 'FastAPI', 'React', 'Playwright', 'Ollama (Llama 3)', 'sentence-transformers', 'Locust'],
         links: [],
-        note: 'Private repository, walkthrough on request. Screenshots are the real dashboard UI in its empty state.',
+        note: 'Walkthrough available on request. Screenshots are the real dashboard UI in its empty state.',
         media: {
-            type: 'slider',
-            images: [
-                ['assets/images/projects/qa-copilot/story_input.webp', 'QA Copilot dashboard with a user story containing acceptance criteria, a business rule and a functional requirement'],
-                ['assets/images/projects/qa-copilot/performance_tab.webp', 'Performance tab: upload an nginx access log to cluster sessions into user personas'],
-                ['assets/images/projects/qa-copilot/load_test.webp', 'Load-test section: generate a Locust script from cluster weights and run it']
+            type: 'rail',
+            label: 'QA Copilot screens',
+            items: [
+                {
+                    src: 'assets/images/projects/qa-copilot/story_input.webp',
+                    label: 'Story',
+                    alt: 'QA Copilot dashboard with a user story containing acceptance criteria, a business rule and a functional requirement',
+                    caption: 'Write the story: acceptance criteria, business rules and requirements as plain text.'
+                },
+                {
+                    src: 'assets/images/projects/qa-copilot/performance_tab.webp',
+                    label: 'Performance',
+                    alt: 'Performance tab: upload an nginx access log to cluster sessions into user personas',
+                    caption: 'Cluster real traffic: upload an nginx log and sessions become user personas.'
+                },
+                {
+                    src: 'assets/images/projects/qa-copilot/load_test.webp',
+                    label: 'Load test',
+                    alt: 'Load-test section: generate a Locust script from cluster weights and run it',
+                    caption: 'Load-test it: a Locust script is generated from the persona weights.'
+                }
             ]
         },
         source: 'qa-copilot-dashboard README + docs/project-walkthrough.md'
