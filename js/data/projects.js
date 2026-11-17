@@ -6,12 +6,15 @@
  * media.type: "terminal" | "slider" | "image"
  * terminal lines are arrays of [className, text] segments:
  *   dim | cyan | green | amber | plain
+ * status: live | private | progress | nolink  (shown as a labelled chip)
+ * media.frameLabel: text in the browser-style frame around screenshots
  * links: only real, working URLs.
  * note:  an honest status line shown on the card.
  */
 window.PORTFOLIO_PROJECTS = [
     {
         id: 'qa-copilot',
+        status: 'private',
         groups: ['ai'],
         title: 'QA Copilot Dashboard',
         category: 'AI / QA automation',
@@ -28,6 +31,7 @@ window.PORTFOLIO_PROJECTS = [
         links: [],
         note: 'Private repository, walkthrough on request. Screenshots are the real dashboard UI in its empty state.',
         media: {
+            frameLabel: 'qa-copilot (private repository)',
             type: 'slider',
             images: [
                 ['assets/images/projects/qa-copilot/story_input.webp', 'QA Copilot dashboard with a user story containing acceptance criteria, a business rule and a functional requirement'],
@@ -39,6 +43,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'nutritrust',
+        status: 'live',
         groups: ['ai', 'web'],
         title: 'Nutri-Trust: Smart Pantry',
         category: 'Full-stack / AI',
@@ -58,6 +63,7 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: 'The category model runs in CI and Docker, not on the Vercel deployment, which falls back to keyword rules.',
         media: {
+            frameLabel: 'nutri-trusto.vercel.app',
             type: 'slider',
             images: [
                 ['assets/images/projects/nutritrust/pantry_dashboard.webp', 'Pantry dashboard sorted by expiry urgency'],
@@ -71,6 +77,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'oddoreve',
+        status: 'live',
         groups: ['ai', 'realtime'],
         title: 'ODDOREVE: Hand-Gesture Cricket',
         category: 'Computer vision / real-time',
@@ -90,6 +97,7 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: 'Gesture play needs a webcam; a tap keypad is available without one.',
         media: {
+            frameLabel: 'oddreve.vercel.app',
             type: 'slider',
             images: [
                 ['assets/images/projects/oddoreve/home.webp', 'ODDOREVE home screen with play-a-friend and play-the-computer options'],
@@ -100,6 +108,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'wrdl',
+        status: 'live',
         groups: ['realtime', 'web'],
         title: 'Wrdl.io: Multiplayer Wordle',
         category: 'Real-time web',
@@ -118,6 +127,7 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: 'Hosted on a free tier, so the first load can take a moment to wake.',
         media: {
+            frameLabel: 'wrdl-io.onrender.com',
             type: 'image',
             src: 'assets/images/projects/wrdl_screenshot.webp',
             alt: 'Wrdl.io gameplay board with the room sidebar'
@@ -126,6 +136,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'episode-three',
+        status: 'progress',
         groups: ['data'],
         title: 'Episode Three',
         category: 'Data / ML (in progress)',
@@ -158,6 +169,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'portfolio',
+        status: 'live',
         groups: ['web'],
         title: 'This Portfolio',
         category: 'Frontend',
@@ -175,6 +187,7 @@ window.PORTFOLIO_PROJECTS = [
         ],
         note: '',
         media: {
+            frameLabel: 'niravshettyportfolio.vercel.app',
             type: 'image',
             src: 'assets/images/projects/portfolio_preview.webp',
             alt: 'Screenshot of this portfolio website'
@@ -183,6 +196,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     {
         id: 'windscapes',
+        status: 'nolink',
         groups: ['web'],
         title: 'Windscapes: Enterprise ERP',
         category: 'Full-stack / internship',
@@ -197,6 +211,7 @@ window.PORTFOLIO_PROJECTS = [
         links: [],
         note: 'Source not linked. Content from my resume; walkthrough available on request.',
         media: {
+            frameLabel: 'windscapes (no public link)',
             type: 'slider',
             images: [
                 ['assets/images/projects/windscapes_1.webp', 'Windscapes ERP dashboard'],
