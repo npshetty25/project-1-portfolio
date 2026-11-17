@@ -166,11 +166,13 @@
         const article = el('article', 'project-card');
         article.dataset.groups = project.groups.join(' ');
         if (project.featured) article.classList.add('project-card--featured');
-        if (project.media.type === 'rail') article.classList.add('project-card--rail');
+        if (project.media && project.media.type === 'rail') article.classList.add('project-card--rail');
         if (project.flip) article.classList.add('project-card--flip');
-        const media = el('div', 'project-media');
-        media.appendChild(mediaFor(project));
-        article.appendChild(media);
+        if (project.media) {
+            const media = el('div', 'project-media');
+            media.appendChild(mediaFor(project));
+            article.appendChild(media);
+        }
 
         const body = el('div', 'project-content');
         const chip = el('p', 'project-status');
