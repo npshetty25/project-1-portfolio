@@ -52,6 +52,18 @@
         });
     }
 
+    // Pointer spotlight on project cards (mouse and pen only).
+    const grid = document.getElementById('projects-grid');
+    if (grid && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        grid.addEventListener('pointermove', (e) => {
+            const card = e.target.closest && e.target.closest('.project-card');
+            if (!card) return;
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        }, { passive: true });
+    }
+
     window.addEventListener('scroll', requestTick, { passive: true });
     window.addEventListener('resize', requestTick, { passive: true });
     requestTick();
