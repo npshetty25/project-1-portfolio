@@ -79,13 +79,29 @@
         return img;
     }
 
+    const STATUS = { live: 'Live', private: 'Private repo', progress: 'In progress', nolink: 'No public source' };
+
+    // Screenshots sit in a browser-style frame so they read as real products.
+    function framed(project, inner) {
+        const wrap = el('div', 'media-frame');
+        const bar = el('div', 'frame-bar');
+        bar.setAttribute('aria-hidden', 'true');
+        ['term-red', 'term-amber', 'term-green'].forEach(c => bar.appendChild(el('span', 'term-dot ' + c)));
+        bar.appendChild(el('span', 'frame-url', project.media.frameLabel));
+        wrap.appendChild(bar);
+        wrap.appendChild(inner);
+        return wrap;
+    }
+
     function mediaFor(project) {
+        let inner;
         switch (project.media.type) {
             case 'terminal': return terminal(project.media);
-            case 'slider': return slider(project);
-            case 'image': return image(project.media);
+            case 'slider': inner = slider(project); break;
+            case 'image': inner = image(project.media); break;
             default: return document.createDocumentFragment();
         }
+        return project.media.frameLabel ? framed(project, inner) : inner;
     }
 
     // ---------- project card ----------
@@ -98,6 +114,11 @@
         article.appendChild(media);
 
         const body = el('div', 'project-content');
+        const chip = el('p', 'project-status');
+        chip.dataset.status = project.status;
+        chip.appendChild(el('span', 'status-dot'));
+        chip.appendChild(document.createTextNode(STATUS[project.status]));
+        body.appendChild(chip);
         body.appendChild(el('p', 'project-category', project.category));
         body.appendChild(el('h3', '', project.title));
         body.appendChild(el('p', 'project-summary', project.summary));
