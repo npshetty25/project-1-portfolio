@@ -47,13 +47,23 @@ function slider(p) {
         `<div class="slider-track">${imgs}</div><div class="slider-dots">${dots}</div></div>`;
 }
 
+const STATUS = { live: 'Live', private: 'Private repo', progress: 'In progress', nolink: 'No public source' };
+
+function framed(p, inner) {
+    return `<div class="media-frame"><div class="frame-bar" aria-hidden="true"><span class="term-dot term-red"></span>` +
+        `<span class="term-dot term-amber"></span><span class="term-dot term-green"></span>` +
+        `<span class="frame-url">${esc(p.media.frameLabel)}</span></div>${inner}</div>`;
+}
+
 function media(p) {
+    let inner;
     switch (p.media.type) {
         case 'terminal': return terminal(p.media);
-        case 'slider': return slider(p);
-        case 'image': return `<img class="project-img" src="${esc(p.media.src)}" alt="${esc(p.media.alt)}" loading="lazy" decoding="async">`;
+        case 'slider': inner = slider(p); break;
+        case 'image': inner = `<img class="project-img" src="${esc(p.media.src)}" alt="${esc(p.media.alt)}" loading="lazy" decoding="async">`; break;
         default: return '';
     }
+    return p.media.frameLabel ? framed(p, inner) : inner;
 }
 
 function card(p) {
@@ -64,6 +74,7 @@ function card(p) {
     return `<article class="project-card${p.featured ? ' project-card--featured' : ''}" data-groups="${esc(p.groups.join(' '))}">` +
         `<div class="project-media">${media(p)}</div>` +
         `<div class="project-content">` +
+        `<p class="project-status" data-status="${esc(p.status)}"><span class="status-dot"></span>${esc(STATUS[p.status])}</p>` +
         `<p class="project-category">${esc(p.category)}</p>` +
         `<h3>${esc(p.title)}</h3>` +
         `<p class="project-summary">${esc(p.summary)}</p>` +
