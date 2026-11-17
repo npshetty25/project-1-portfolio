@@ -83,7 +83,8 @@
 
     function rail(project) {
         const m = project.media;
-        const wrap = el('div', 'media-rail');
+        const wrap = el('div', 'media-rail' + (m.portrait ? ' media-rail--portrait' : ''));
+        if (m.ratio) wrap.style.setProperty('--rail-ratio', m.ratio);
 
         const main = el('img', 'rail-main');
         main.src = m.items[0].src;
@@ -166,6 +167,7 @@
         article.dataset.groups = project.groups.join(' ');
         if (project.featured) article.classList.add('project-card--featured');
         if (project.media.type === 'rail') article.classList.add('project-card--rail');
+        if (project.flip) article.classList.add('project-card--flip');
         const media = el('div', 'project-media');
         media.appendChild(mediaFor(project));
         article.appendChild(media);
