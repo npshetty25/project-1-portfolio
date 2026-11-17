@@ -54,7 +54,7 @@ function rail(p) {
     const tabs = m.items.map((it, i) =>
         `<button class="rail-tab" type="button" role="tab" aria-selected="${i === 0}" data-index="${i}">` +
         `<img src="${esc(it.src)}" alt="" loading="lazy" decoding="async"><span>${esc(it.label)}</span></button>`).join('');
-    return `<div class="media-rail"><img class="rail-main" src="${esc(m.items[0].src)}" alt="${esc(m.items[0].alt)}" loading="lazy" decoding="async">` +
+    return `<div class="media-rail${m.portrait ? ' media-rail--portrait' : ''}"${m.ratio ? ` style="--rail-ratio: ${esc(m.ratio)};"` : ''}><img class="rail-main" src="${esc(m.items[0].src)}" alt="${esc(m.items[0].alt)}" loading="lazy" decoding="async">` +
         `<p class="rail-caption" aria-live="polite">${esc(m.items[0].caption)}</p>` +
         `<div class="rail-tabs" role="tablist" aria-label="${esc(m.label)}">${tabs}</div></div>`;
 }
@@ -80,7 +80,7 @@ function card(p) {
         ? `<div class="project-links">${p.links.map(l =>
             `<a class="project-link" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join('')}</div>`
         : '';
-    return `<article class="project-card${p.featured ? ' project-card--featured' : ''}${p.media.type === 'rail' ? ' project-card--rail' : ''}" data-groups="${esc(p.groups.join(' '))}">` +
+    return `<article class="project-card${p.featured ? ' project-card--featured' : ''}${p.media.type === 'rail' ? ' project-card--rail' : ''}${p.flip ? ' project-card--flip' : ''}" data-groups="${esc(p.groups.join(' '))}">` +
         `<div class="project-media">${media(p)}</div>` +
         `<div class="project-content">` +
         `<p class="project-status" data-status="${esc(p.status)}"><span class="status-dot"></span>${esc(STATUS[p.status])}</p>` +
