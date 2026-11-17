@@ -1917,44 +1917,6 @@ footer {
 .project-status[data-status="progress"] .status-dot { background: #38bdf8; }
 .project-status[data-status="nolink"] .status-dot { background: #94a3b8; }
 
-.media-frame {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    background: #0d1117;
-}
-
-.frame-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.8rem;
-    background: #161b22;
-    border-bottom: 1px solid #30363d;
-    flex-shrink: 0;
-}
-
-.frame-url {
-    flex: 1;
-    min-width: 0;
-    margin-left: 0.6rem;
-    padding: 0.18rem 0.7rem;
-    background: #0d1117;
-    border: 1px solid #30363d;
-    border-radius: 100px;
-    color: #8b949e;
-    font-size: 0.72rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.media-frame .project-slider,
-.media-frame .project-img {
-    flex: 1;
-}
-
 .project-card {
     --mx: 50%;
     --my: 50%;
