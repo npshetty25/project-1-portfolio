@@ -59,11 +59,17 @@ function rail(p) {
         `<div class="rail-tabs" role="tablist" aria-label="${esc(m.label)}">${tabs}</div></div>`;
 }
 
+function architecture(p) {
+    const m = p.media;
+    return `<div class="arch" role="img" aria-label="${esc(m.alt)}">${m.svg}</div><p class="media-caption">${esc(m.label)}</p>`;
+}
+
 function media(p) {
     switch (p.media.type) {
         case 'terminal': return terminal(p.media);
         case 'slider': return slider(p);
         case 'rail': return rail(p);
+        case 'architecture': return architecture(p);
         case 'image': return `<img class="project-img" src="${esc(p.media.src)}" alt="${esc(p.media.alt)}" loading="lazy" decoding="async">`;
         default: return '';
     }
