@@ -4,6 +4,7 @@
  * verified from a repo, it is not here. `source` records where each came from.
  *
  * flip: true puts the media on the right of a featured card
+ * media is optional: a project with no real visuals shows text only
  * media.type: "terminal" | "slider" | "image" | "rail" (large preview + thumbnail tabs; ratio, portrait optional) | "architecture" (inline SVG diagram)
  * terminal lines are arrays of [className, text] segments:
  *   dim | cyan | green | amber | plain
@@ -329,31 +330,6 @@ window.PORTFOLIO_PROJECTS = [
         tags: ['TypeScript', 'React', 'Python', 'Nginx', 'REST APIs', 'CI/CD'],
         links: [],
         note: 'Source not linked. Content from my resume; walkthrough available on request.',
-        media: {
-            type: 'rail',
-            label: 'Windscapes visuals',
-            ratio: '1 / 1',
-            items: [
-                {
-                    src: 'assets/images/projects/windscapes_1.webp',
-                    label: 'Dashboard',
-                    alt: 'Illustrative visual of an ERP inventory dashboard',
-                    caption: 'Illustrative visual, not a screenshot: an ERP inventory dashboard.'
-                },
-                {
-                    src: 'assets/images/projects/windscapes_2.webp',
-                    label: 'Access',
-                    alt: 'Illustrative visual of role-based access control and an Nginx gateway diagram',
-                    caption: 'Illustrative visual, not a screenshot: role-based access and the Nginx gateway.'
-                },
-                {
-                    src: 'assets/images/projects/windscapes_3.webp',
-                    label: 'CI/CD',
-                    alt: 'Illustrative visual of a CI/CD pipeline',
-                    caption: 'Illustrative visual, not a screenshot: a CI/CD pipeline.'
-                }
-            ]
-        },
         source: 'resume (no repository to verify against)'
     }
 ];
