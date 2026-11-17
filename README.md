@@ -59,10 +59,10 @@ The repository is connected to Vercel; pushing to `master` deploys. `vercel.json
 
 ## Known limitations
 
-- Skill icons still load Font Awesome from a CDN. Skill names are plain text, so the grid stays readable if the CDN fails.
+- Icons are inline SVGs: brand logos from Simple Icons (CC0) and line icons from Lucide (ISC). No icon font or CDN is used.
+
 - QA Copilot and Windscapes have no public repository, so their cards carry no source link.
 - The ODDOREVE, QA Copilot and Episode Three terminal previews are labelled as illustrative or taken from reports; they are not recordings.
-- Project images are large PNGs and have not been converted to WebP yet.
 
 ## Contact
 
