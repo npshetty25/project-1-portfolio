@@ -976,18 +976,6 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.skill-item i {
-    font-size: 2.1rem;
-    width: auto;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--skill-color);
-    transition: all 0.3s ease;
-}
-
 .skill-item svg {
     width: 32px;
     height: 34px;
@@ -1000,16 +988,6 @@ nav {
     transform: translateY(-5px);
 }
 
-.skill-item:hover i {
-    background: linear-gradient(135deg, var(--skill-color) 0%, #ffffff 50%, var(--skill-color) 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShine 2s linear infinite;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
 .skill-item:hover svg {
     filter: drop-shadow(0 0 10px var(--skill-color)) brightness(1.2);
     transform: scale(1.1);
@@ -1017,16 +995,6 @@ nav {
 
 /* Next.js special case (white text on dark check) */
 /* Ideally Next.js icon is just black/white. We used --skill-color: #ffffff */
-
-@keyframes gradientShine {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    100% {
-        background-position: 200% 50%;
-    }
-}
 
 /* Skill color classes */
 .skill-html { --skill-color: #E34F26; }
@@ -2073,4 +2041,38 @@ footer {
         border-right: 0;
         border-left: 1px solid var(--border-color);
     }
+}
+
+
+/* ===== INLINE ICONS ===== */
+.skill-item svg {
+    flex-shrink: 0;
+}
+
+.cert-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.stack-line {
+    margin-top: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.stack-line strong {
+    color: var(--accent-ink);
+}
+
+/* ===== ARCHITECTURE MEDIA ===== */
+.arch {
+    padding: 1.1rem;
+    background: #0d1117;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.arch svg {
+    display: block;
+    width: 100%;
+    height: auto;
 }
