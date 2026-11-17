@@ -1966,10 +1966,25 @@ footer {
     background: #060a14;
 }
 
+.media-rail {
+    --rail-ratio: 2 / 1;
+    --thumb-ratio: var(--rail-ratio);
+}
+
+/* Phone screenshots: a fixed-height preview, thumbnails in portrait */
+.media-rail--portrait {
+    --thumb-ratio: 3 / 4;
+}
+
+.media-rail--portrait .rail-main {
+    aspect-ratio: auto;
+    height: clamp(280px, 30vw, 380px);
+}
+
 .rail-main {
     display: block;
     width: 100%;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: var(--rail-ratio);
     object-fit: contain;
     border: 1px solid var(--border-color);
     border-radius: 10px;
@@ -1986,7 +2001,8 @@ footer {
 
 .rail-tabs {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    max-width: 640px;
     gap: 0.7rem;
 }
 
@@ -2007,7 +2023,7 @@ footer {
 .rail-tab img {
     display: block;
     width: 100%;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: var(--thumb-ratio);
     object-fit: cover;
     object-position: top left;
     margin-bottom: 0.4rem;
@@ -2032,11 +2048,15 @@ footer {
 
 @media (min-width: 900px) {
     /* text on the left, preview on the right */
-    .project-card--rail {
-        grid-template-columns: 1fr 1.35fr;
+    .project-card--rail.project-card--featured {
+        grid-template-columns: 1.1fr 1fr;
     }
 
-    .project-card--rail .project-media {
+    .project-card--flip {
+        grid-template-columns: 1fr 1.35fr !important;
+    }
+
+    .project-card--flip .project-media {
         order: 2;
         border-right: 0;
         border-left: 1px solid var(--border-color);
