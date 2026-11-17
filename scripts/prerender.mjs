@@ -49,21 +49,13 @@ function slider(p) {
 
 const STATUS = { live: 'Live', private: 'Private repo', progress: 'In progress', nolink: 'No public source' };
 
-function framed(p, inner) {
-    return `<div class="media-frame"><div class="frame-bar" aria-hidden="true"><span class="term-dot term-red"></span>` +
-        `<span class="term-dot term-amber"></span><span class="term-dot term-green"></span>` +
-        `<span class="frame-url">${esc(p.media.frameLabel)}</span></div>${inner}</div>`;
-}
-
 function media(p) {
-    let inner;
     switch (p.media.type) {
         case 'terminal': return terminal(p.media);
-        case 'slider': inner = slider(p); break;
-        case 'image': inner = `<img class="project-img" src="${esc(p.media.src)}" alt="${esc(p.media.alt)}" loading="lazy" decoding="async">`; break;
+        case 'slider': return slider(p);
+        case 'image': return `<img class="project-img" src="${esc(p.media.src)}" alt="${esc(p.media.alt)}" loading="lazy" decoding="async">`;
         default: return '';
     }
-    return p.media.frameLabel ? framed(p, inner) : inner;
 }
 
 function card(p) {
